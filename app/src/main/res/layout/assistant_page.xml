@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/assistant_page_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:background="@color/gameRed">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/transparent"
+        android:elevation="@dimen/main_toolbar_elevation"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        tools:title="Assistant" />
+
+
+    <ImageView
+        android:id="@+id/img_assistant_icon"
+        android:layout_width="@dimen/assistant_imgIcon_size"
+        android:layout_height="0dp"
+        android:contentDescription="@string/assistant_imgIcon"
+        tools:src="@drawable/logo"
+        android:tint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="h,1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <TextView
+        android:id="@+id/lbl_assistant_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/main_margin_2x"
+        tools:text="@string/assistant_rankingDescription"
+        android:textColor="@color/white"
+        android:textSize="@dimen/main_textSize_2x"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_assistant_icon" />
+
+    <Button
+        android:id="@+id/btn_assistant_finish"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/main_margin_2x"
+        android:text="@string/assistant_btnFinish"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lbl_assistant_description"
+        android:textColor="@color/white"
+        tools:visibility="visible" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/helpDialogDestination"
+        android:title="@string/about_title"
+        android:iconTint="@color/white"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_about_black_24dp"
+         />
+</menu>

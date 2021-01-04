@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <item
+        android:id="@+id/deletePlayerDialogDestination"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_delete_black_24dp"
+        android:iconTint="@color/white"
+        android:title="@string/player_edition_mnuDelete"
+        tools:targetApi="o" />
+
+    <item
+        android:id="@+id/helpDialogDestination"
+        android:title="@string/about_title"
+        android:iconTint="@color/white"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_about_black_24dp"
+        tools:targetApi="o" />
+</menu>

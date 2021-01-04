@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_activity.xml"
+    app:startDestination="@id/dashboardFragmentDestination">
+    <fragment
+        tools:layout="@layout/dashboard_fragment"
+        android:id="@+id/dashboardFragmentDestination"
+        android:name="es.iessaladillo.pedrojoya.stroop.ui.main.DashboardFragment"
+        android:label="@string/dashboard_title" >
+
+        <action
+            android:id="@+id/open_aboutFragment"
+            app:destination="@id/AboutFragmentDestination" />
+
+        <action
+            android:id="@+id/open_assistantFragment"
+            app:destination="@id/assistantFragmentDestination" />
+
+        <action
+            android:id="@+id/open_settingFragment"
+            app:destination="@id/settingFragmentDestination" />
+        <action
+            android:id="@+id/open_playerSelectionFragment"
+            app:destination="@id/playerSelectionFragmentDestination" />
+        <action
+            android:id="@+id/open_rankingFragment"
+            app:destination="@id/rankingFragmentDestination" />
+        <action
+            android:id="@+id/open_helpDialogFragment"
+            app:destination="@id/helpDialogFragmentDestination" />
+        <action
+            android:id="@+id/open_gameFragment"
+            app:destination="@id/gameFragmentDestination" />
+
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/AboutFragmentDestination"
+        android:name="es.iessaladillo.pedrojoya.stroop.ui.about.AboutFragment"
+        tools:layout="@layout/about_fragment"
+        android:label="@string/about_title" >
+        <action
+            android:id="@+id/open_helpDialogFragment"
+            app:destination="@id/helpDialogFragmentDestination" />
+    </fragment>
+
+
+    <fragment
+        tools:layout="@layout/assistant_page"
+        android:id="@+id/assistantFragmentDestination"
+        android:name="es.iessaladillo.pedrojoya.stroop.ui.assistant.AssistantFragment"
+        android:label="@string/assistant_title" >
+        <action
+            android:id="@+id/open_helpDialogFragment"
+            app:destination="@id/helpDialogFragmentDestination" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingFragmentDestination"
+        android:name="es.iessaladillo.pedrojoya.stroop.ui.preference.SettingFragment"
+        android:label="@string/settings_title" >
+        <action
+            android:id="@+id/open_helpDialogFragment"
+            app:destination="@id/helpDialogFragmentDestination" />
+    </fragment>
+
+    <fragment
+        tools:layout="@layout/player_selection_fragment"
+        android:id="@+id/playerSelectionFragmentDestination"
+        android:name="es.iessaladillo.pedrojoya.stroop.ui.player.playerSelection.PlayerSelectionFragment"
+        android:label="@string/player_selection_title" >
+        <action
+            android:id="@+id/open_playerCreationFragment"
+            app:destination="@id/playerCreationFragmentDestination" />
+        <action
+            android:id="@+id/open_playerEditionFragment"
+            app:destination="@id/playerEditionFragmentDestination" />
+        <action
+            android:id="@+id/open_helpDialogFragment"
+            app:destination="@id/helpDialogFragmentDestination" />
+    </fragment>
+
+
+    <fragment
+        tools:layout="@layout/player_creation_fragment"
+        android:id="@+id/playerCreationFragmentDestination"
+        android:name="es.iessaladillo.pedrojoya.stroop.ui.player.playerCreation.PlayerCreationFragment"
+        android:label="@string/player_creation_title" >
+        <action
+            android:id="@+id/open_helpDialogFragment"
+            app:destination="@id/helpDialogFragmentDestination" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/player_edition_fragment"
+        android:id="@+id/playerEditionFragmentDestination"
+        android:name="es.iessaladillo.pedrojoya.stroop.ui.player.playerEdition.PlayerEditionFragment"
+        android:label="@string/player_edition_title" >
+        <argument
+            android:name="playerId"
+            app:argType="long" />
+        <action
+            android:id="@+id/open_deletePlayerDialog"
+            app:destination="@id/deletePlayerDialogDestination" />
+        <action
+            android:id="@+id/open_helpDialogFragment"
+            app:destination="@id/helpDialogFragmentDestination" />
+    </fragment>
+
+    <dialog
+        android:id="@+id/deletePlayerDialogDestination"
+        android:name="es.iessaladillo.pedrojoya.stroop.ui.dialog.delete.DeletePlayerDialogFragment"
+        android:label="@string/player_deletion_title" >
+        <argument
+            android:name="playerId"
+            app:argType="long" />
+    </dialog>
+    <fragment
+        android:id="@+id/rankingFragmentDestination"
+        tools:layout="@layout/ranking_fragment"
+        android:name="es.iessaladillo.pedrojoya.stroop.ui.ranking.RankingFragment"
+        android:label="@string/ranking_title" >
+        <action
+            android:id="@+id/open_helpDialogFragment"
+            app:destination="@id/helpDialogFragmentDestination" />
+        <action
+            android:id="@+id/open_resultFragment"
+            app:destination="@id/resultFragmentDestination" />
+    </fragment>
+    <dialog
+        android:id="@+id/helpDialogFragmentDestination"
+        android:name="es.iessaladillo.pedrojoya.stroop.ui.dialog.help.HelpDialogFragment"
+        android:label="@string/help_title" >
+        <argument
+            android:name="fragmentId"
+            app:argType="integer" />
+    </dialog>
+    <fragment
+        android:id="@+id/resultFragmentDestination"
+        android:name="es.iessaladillo.pedrojoya.stroop.ui.result.ResultFragment"
+        android:label="@string/game_result_title" >
+        <argument
+            android:name="gameId"
+            app:argType="long" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/game_fragment"
+        android:id="@+id/gameFragmentDestination"
+        android:name="es.iessaladillo.pedrojoya.stroop.ui.game.GameFragment"
+        android:label="GameFragment" >
+        <action
+            android:id="@+id/open_resultFragmentFromGameFragment"
+            app:destination="@id/resultFragmentDestination"
+            app:popUpTo="@id/dashboardFragmentDestination" />
+        <action
+            android:id="@+id/open_playerSelectionFromGameFragment"
+            app:destination="@id/playerSelectionFragmentDestination"
+            app:popUpTo="@id/dashboardFragmentDestination" />
+    </fragment>
+
+
+</navigation>

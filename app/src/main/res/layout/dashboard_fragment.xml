@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <data>
+
+        <variable
+            name="vm"
+            type="es.iessaladillo.pedrojoya.stroop.ui.main.DashboardFragmentViewModel" />
+
+
+        <variable
+            name="playDirection"
+            type="androidx.navigation.NavDirections" />
+
+        <variable
+            name="settingsDirection"
+            type="androidx.navigation.NavDirections" />
+
+        <variable
+            name="rankingDirection"
+            type="androidx.navigation.NavDirections" />
+
+        <variable
+            name="assistantDirection"
+            type="androidx.navigation.NavDirections" />
+
+        <variable
+            name="playerDirection"
+            type="androidx.navigation.NavDirections" />
+
+        <variable
+            name="aboutDirection"
+            type="androidx.navigation.NavDirections" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/main_header"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/main_header_height"
+            android:background="@color/primary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@android:color/transparent"
+                android:elevation="@dimen/main_toolbar_elevation"
+                android:theme="@style/AppTheme.AppBarOverlay"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+
+            <ImageView
+                android:id="@+id/dashboard_imgHeader"
+                setAvatar="@{vm.currentPlayer}"
+                android:layout_width="@dimen/main_avatar_size"
+                android:layout_height="0dp"
+                android:contentDescription="@string/dashboard_imgPlay"
+                android:onClick="@{() -> vm.setNewDestination(playerDirection.actionId)}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="h,1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar"
+                tools:src="@drawable/logo" />
+
+            <TextView
+                android:id="@+id/playerCreation_edtHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> vm.setNewDestination(playerDirection.actionId)}"
+                android:text="@{vm.currentPlayer == null ? @string/player_selection_no_players_yet : vm.currentPlayer.name }"
+                android:textColor="@color/white"
+                android:textSize="@dimen/main_textSize_3x"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/dashboard_imgHeader"
+                app:layout_constraintStart_toStartOf="@+id/dashboard_imgHeader"
+                app:layout_constraintTop_toBottomOf="@+id/dashboard_imgHeader"
+                tools:text="No player selected" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="@dimen/main_margin_2x"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_header">
+
+
+            <!-- Play card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/dashboard_cardPlay"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:elevation="@dimen/main_card_elevation"
+                android:onClick="@{() -> vm.setNewDestination(playDirection.actionId)}"
+                app:cardCornerRadius="@dimen/main_card_cornerRadius"
+                app:layout_constraintEnd_toStartOf="@+id/dashboard_cardSettings"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="@dimen/main_margin_2x">
+
+                    <ImageView
+                        android:id="@+id/dashboard_imgPlay"
+                        android:layout_width="@dimen/dashboard_card_image_size"
+                        android:layout_height="0dp"
+                        android:layout_margin="@dimen/main_margin_1x"
+                        android:contentDescription="@string/dashboard_imgPlay"
+                        android:src="@drawable/ic_play_black_24dp"
+                        android:tint="@color/playOption"
+                        app:layout_constraintDimensionRatio="h,1:1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <TextView
+                        android:id="@+id/playerSelection_lblPlayer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/main_margin_1x"
+                        android:text="@string/dashboard_lblPlay"
+                        android:textColor="@color/playOption"
+                        android:textSize="@dimen/main_textSize_1x"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/dashboard_imgPlay"
+                        app:layout_constraintStart_toStartOf="@+id/dashboard_imgPlay"
+                        app:layout_constraintTop_toBottomOf="@+id/dashboard_imgPlay" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <!-- Setting card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/dashboard_cardSettings"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/main_margin_2x"
+                android:elevation="@dimen/main_card_elevation"
+                android:onClick="@{() -> vm.setNewDestination(settingsDirection.actionId)}"
+                app:cardCornerRadius="@dimen/main_card_cornerRadius"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/dashboard_cardPlay"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="@dimen/main_margin_2x">
+
+                    <ImageView
+                        android:id="@+id/dashboard_imgSettings"
+
+                        android:layout_width="@dimen/dashboard_card_image_size"
+                        android:layout_height="0dp"
+                        android:layout_margin="@dimen/main_margin_1x"
+                        android:contentDescription="@string/dashboard_imgSettings"
+                        android:src="@drawable/ic_settings_black_24dp"
+                        android:tint="@color/settingsOption"
+                        app:layout_constraintDimensionRatio="h,1:1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <TextView
+                        android:id="@+id/dashboard_lblSettings"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/main_margin_1x"
+                        android:text="@string/dashboard_lblSettings"
+                        android:textColor="@color/settingsOption"
+                        android:textSize="@dimen/main_textSize_1x"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/dashboard_imgSettings"
+                        app:layout_constraintStart_toStartOf="@+id/dashboard_imgSettings"
+                        app:layout_constraintTop_toBottomOf="@+id/dashboard_imgSettings" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <!-- Ranking card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/dashboard_cardRanking"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/main_margin_2x"
+                android:elevation="@dimen/main_card_elevation"
+                android:onClick="@{() -> vm.setNewDestination(rankingDirection.actionId)}"
+                app:cardCornerRadius="@dimen/main_card_cornerRadius"
+                app:layout_constraintEnd_toStartOf="@+id/dashboard_cardAssistant"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dashboard_cardPlay">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/dashboard_imgRanking"
+
+                        android:layout_width="60dp"
+                        android:layout_height="58dp"
+                        android:layout_margin="@dimen/main_margin_1x"
+                        android:contentDescription="@string/dashboard_imgRanking"
+                        android:src="@drawable/ic_ranking_black_24dp"
+                        android:tint="@color/rankingOption"
+                        app:layout_constraintDimensionRatio="h,1:1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <TextView
+                        android:id="@+id/dashboard_lblRanking"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/main_margin_1x"
+                        android:text="@string/dashboard_lblRanking"
+                        android:textColor="@color/rankingOption"
+                        android:textSize="@dimen/main_textSize_1x"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/dashboard_imgRanking"
+                        app:layout_constraintStart_toStartOf="@+id/dashboard_imgRanking"
+                        app:layout_constraintTop_toBottomOf="@+id/dashboard_imgRanking" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <!-- Assistant card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/dashboard_cardAssistant"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/main_margin_2x"
+                android:elevation="@dimen/main_card_elevation"
+                android:onClick="@{() -> vm.setNewDestination(assistantDirection.actionId)}"
+                app:cardCornerRadius="@dimen/main_card_cornerRadius"
+                app:layout_constraintBottom_toBottomOf="@+id/dashboard_cardRanking"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/dashboard_cardRanking"
+                app:layout_constraintTop_toTopOf="@+id/dashboard_cardRanking">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/dashboard_imgAssistant"
+
+                        android:layout_width="60dp"
+                        android:layout_height="58dp"
+                        android:layout_margin="@dimen/main_margin_1x"
+                        android:contentDescription="@string/dashboard_imgAssistant"
+                        android:src="@drawable/ic_assistant_black_24dp"
+                        android:tint="@color/assistantOption"
+                        app:layout_constraintDimensionRatio="h,1:1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <TextView
+                        android:id="@+id/dashboard_lblAssistant"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/main_margin_1x"
+                        android:text="@string/dashboard_lblAssistant"
+                        android:textColor="@color/assistantOption"
+                        android:textSize="@dimen/main_textSize_1x"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/dashboard_imgAssistant"
+                        app:layout_constraintStart_toStartOf="@+id/dashboard_imgAssistant"
+                        app:layout_constraintTop_toBottomOf="@+id/dashboard_imgAssistant" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+            <!-- player card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/dashboard_cardPlayer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/main_margin_2x"
+                android:elevation="@dimen/main_card_elevation"
+                android:onClick="@{() -> vm.setNewDestination(playerDirection.actionId)}"
+                app:cardCornerRadius="@dimen/main_card_cornerRadius"
+                app:layout_constraintEnd_toStartOf="@+id/dashboard_cardAbout"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dashboard_cardRanking">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/dashboard_imgPlayer"
+
+                        android:layout_width="60dp"
+                        android:layout_height="58dp"
+                        android:layout_margin="@dimen/main_margin_1x"
+                        android:contentDescription="@string/dashboard_imgPlayer"
+                        android:src="@drawable/ic_player_black_24dp"
+                        android:tint="@color/playerOption"
+                        app:layout_constraintDimensionRatio="h,1:1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <TextView
+                        android:id="@+id/dashboard_lblPlayer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/main_margin_1x"
+                        android:text="@string/dashboard_lblPlayer"
+                        android:textColor="@color/playerOption"
+                        android:textSize="@dimen/main_textSize_1x"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/dashboard_imgPlayer"
+                        app:layout_constraintStart_toStartOf="@+id/dashboard_imgPlayer"
+                        app:layout_constraintTop_toBottomOf="@+id/dashboard_imgPlayer" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+            <!-- about card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/dashboard_cardAbout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/main_margin_2x"
+                android:elevation="@dimen/main_card_elevation"
+                android:onClick="@{() -> vm.setNewDestination(aboutDirection.actionId)}"
+                app:cardCornerRadius="@dimen/main_card_cornerRadius"
+                app:layout_constraintBottom_toBottomOf="@+id/dashboard_cardPlayer"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/dashboard_cardPlayer"
+                app:layout_constraintTop_toTopOf="@+id/dashboard_cardPlayer">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/dashboard_imgAbout"
+
+                        android:layout_width="60dp"
+                        android:layout_height="58dp"
+                        android:layout_margin="@dimen/main_margin_1x"
+                        android:contentDescription="@string/dashboard_imgAbout"
+                        android:src="@drawable/ic_about_black_24dp"
+                        android:tint="@color/aboutOption"
+                        app:layout_constraintDimensionRatio="h,1:1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <TextView
+                        android:id="@+id/dashboard_lblAbout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/main_margin_1x"
+                        android:text="@string/dashboard_lblAbout"
+                        android:textColor="@color/aboutOption"
+                        android:textSize="@dimen/main_textSize_1x"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/dashboard_imgAbout"
+                        app:layout_constraintStart_toStartOf="@+id/dashboard_imgAbout"
+                        app:layout_constraintTop_toBottomOf="@+id/dashboard_imgAbout" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <color name="primary">#008577</color>
+    <color name="primaryDark">#00574B</color>
+    <color name="accent">#D81B60</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="whiteHint">#88FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="divider" tools:ignore="UnusedResources">#80808080</color>
+
+    <color name="playOption">#FFCC00</color>
+    <color name="settingsOption">#26CA69</color>
+    <color name="rankingOption">#03A9F5</color>
+    <color name="assistantOption">#FF9700</color>
+    <color name="playerOption">#CC33CC</color>
+    <color name="aboutOption">#F44236</color>
+    <color name="stroopOption">#871616</color>
+    <color name="finishOption">#adba49</color>
+
+    <color name="rightAnswer">#7986cb</color>
+    <color name="wrongAnswer">#e57373</color>
+
+    <!-- Game colours -->
+    <color name="gameRed">#f44337</color>
+    <color name="gameGreen">#29c96b</color>
+    <color name="gameBlue">#0a3782</color>
+    <color name="gameYellow">#fecd02</color>
+
+</resources>

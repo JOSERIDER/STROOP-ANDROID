@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <data>
+        <variable
+            name="vm"
+            type="es.iessaladillo.pedrojoya.stroop.ui.player.playerSelection.PlayerSelectionViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/main_header"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/main_header_height"
+            android:background="@color/primary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@android:color/transparent"
+                android:elevation="@dimen/main_toolbar_elevation"
+                android:theme="@style/AppTheme.AppBarOverlay"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                tools:title="@string/player_selection_title" />
+
+
+            <ImageView
+                android:id="@+id/img_playerSelection_avatar_header"
+                android:layout_width="@dimen/main_avatar_size"
+                android:layout_height="0dp"
+                android:contentDescription="@string/main_img_avatar_description"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="h,1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar"
+                setAvatar="@{vm.currentPlayer}"
+                tools:src="@drawable/logo" />
+
+            <TextView
+                android:id="@+id/lbl_playerSelection_avatar_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{vm.currentPlayer == null ? @string/player_selection_no_player_selected : vm.currentPlayer.name }"
+                android:textColor="@color/white"
+                android:textSize="@dimen/main_textSize_3x"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/img_playerSelection_avatar_header"
+                app:layout_constraintStart_toStartOf="@+id/img_playerSelection_avatar_header"
+                app:layout_constraintTop_toBottomOf="@+id/img_playerSelection_avatar_header"
+                tools:text="No player selected" />
+
+            <TextView
+
+                android:id="@+id/lbl_playerSelection_avatar_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/main_textSize_2x"
+                app:goneUnless="@{vm.currentPlayer != null}"
+                android:layout_marginStart="@dimen/main_margin_2x"
+                android:textColor="@color/white"
+                android:drawableTint="@color/white"
+                android:drawableStart="@drawable/ic_player_edition_black_24dp"
+                android:text="@string/player_selection_btnEdit"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/img_playerSelection_avatar_header"
+                tools:targetApi="m" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <TextView
+            android:id="@+id/playerSelection_emptyView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/ic_player_add_black_48dp"
+            android:drawableTint="@color/playerOption"
+            android:text="@string/player_selection_no_players_yet"
+            android:textColor="@color/playerOption"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_header"
+            app:goneUnless="@{vm.players.empty}"
+            tools:targetApi="m" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:padding="@dimen/main_margin_1x"
+            android:id="@+id/rcl_playerSelection"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:goneUnless="@{!vm.players.empty}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_header" />
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_playerSelection_add_player"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/main_margin_2x"
+            android:src="@drawable/ic_player_add_black_48dp"
+            android:tint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

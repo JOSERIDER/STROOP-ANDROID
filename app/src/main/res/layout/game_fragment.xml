@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="es.iessaladillo.pedrojoya.stroop.ui.game.GameViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primary"
+            android:padding="@dimen/main_margin_2x"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <!-- Words -->
+            <TextView
+                android:id="@+id/lbl_game_words_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="@dimen/main_textSize_5x"
+                app:layout_constraintEnd_toEndOf="@+id/lbl_game_words"
+                app:layout_constraintStart_toStartOf="@+id/lbl_game_words"
+                app:layout_constraintTop_toTopOf="parent"
+                app:setInteger="@{vm.wordsCount}"
+                tools:text="12" />
+
+            <TextView
+                android:id="@+id/lbl_game_words"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/game_lblWordsLabel"
+                android:textColor="@color/white"
+                android:textSize="@dimen/main_textSize_2x"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/lbl_game_correct"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_game_words_count" />
+
+            <!-- Correct -->
+
+            <TextView
+                android:id="@+id/lbl_game_correct_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="@dimen/main_textSize_5x"
+                app:layout_constraintEnd_toEndOf="@+id/lbl_game_correct"
+                app:layout_constraintStart_toStartOf="@+id/lbl_game_correct"
+                app:layout_constraintTop_toTopOf="parent"
+                app:setInteger="@{vm.correctCount}"
+                tools:text="4" />
+
+            <TextView
+                android:id="@+id/lbl_game_correct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/game_lblCorrectLabel"
+                android:textColor="@color/white"
+                android:textSize="@dimen/main_textSize_2x"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/lbl_game_attempts"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/lbl_game_words"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_game_correct_count" />
+
+
+            <!-- Attempts only is visible when game mode is attempts-->
+
+            <TextView
+                android:id="@+id/lbl_game_correct_attemps"
+                goneUnless="@{vm.gameMode == vm.gameMode.ATTEMPS}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="@dimen/main_textSize_5x"
+                app:layout_constraintEnd_toEndOf="@+id/lbl_game_attempts"
+                app:layout_constraintHorizontal_bias="0.576"
+                app:layout_constraintStart_toStartOf="@+id/lbl_game_attempts"
+                app:layout_constraintTop_toTopOf="parent"
+                app:setInteger="@{vm.attemptsCount}"
+                tools:text="5" />
+
+            <TextView
+                android:id="@+id/lbl_game_attempts"
+                goneUnless="@{vm.gameMode == vm.gameMode.ATTEMPS}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/game_attempts"
+                android:textColor="@color/white"
+                android:textSize="@dimen/main_textSize_2x"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/lbl_game_points"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/lbl_game_correct"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_game_correct_attemps" />
+
+
+            <!-- Points only is visible when game mode is Time-->
+
+            <TextView
+                android:id="@+id/lbl_game_points_count"
+                goneUnless="@{vm.gameMode == vm.gameMode.TIME}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="@dimen/main_textSize_4x"
+                app:layout_constraintEnd_toEndOf="@+id/lbl_game_points"
+                app:layout_constraintStart_toStartOf="@+id/lbl_game_points"
+                app:layout_constraintTop_toTopOf="parent"
+                app:setInteger="@{vm.pointsCount}"
+                tools:text="40"
+                tools:visibility="gone" />
+
+            <TextView
+                android:id="@+id/lbl_game_points"
+                goneUnless="@{vm.gameMode == vm.gameMode.TIME}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/game_points"
+                android:textColor="@color/white"
+                android:textSize="@dimen/main_textSize_2x"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/lbl_game_attempts"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_game_points_count"
+                tools:visibility="gone" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/lbl_game_word"
+            setColorText="@{vm.wordColor}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{vm.word}"
+            android:textSize="@dimen/main_textSize_7x"
+            app:layout_constraintBottom_toTopOf="@+id/img_game_wrong"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+            tools:text="Red"
+            tools:textColor="@color/gameBlue" />
+
+
+        <ImageView
+            android:id="@+id/img_game_right"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="@string/game_btnRight"
+            android:onClick="@{ () -> vm.checkRight()}"
+            android:src="@drawable/ic_right_black_24dp"
+            android:tint="@color/rightAnswer"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/img_game_wrong"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/img_game_wrong"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageView
+            android:id="@+id/img_game_wrong"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="@string/game_btnWrong"
+            android:onClick="@{ () -> vm.checkWrong()}"
+            android:src="@drawable/ic_wrong_black_24dp"
+            android:tint="@color/wrongAnswer"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="w,1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/img_game_right" />
+
+        <ProgressBar
+            android:id="@+id/progressBar_game"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:max="@{vm.gameTime}"
+            android:progress="@{vm.millisToFinished}"
+            android:progressTint="@color/accent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+            tools:max="100"
+            tools:progress="57" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

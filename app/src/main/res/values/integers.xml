@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="player_selection_numColumns">2</integer>
+    <integer name="player_edition_numColumns">3</integer>
+    <integer name="player_creation_numColumns">3</integer>
+</resources>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <dimen name="main_margin_half">4dp</dimen>
+    <dimen name="main_margin_1x">8dp</dimen>
+    <dimen name="main_margin_2x">16dp</dimen>
+    <dimen name="main_margin_3x">24dp</dimen>
+    <dimen name="main_margin_4x">32dp</dimen>
+
+    <dimen name="main_textSize_1x">16sp</dimen>
+    <dimen name="main_textSize_2x">20sp</dimen>
+    <dimen name="main_textSize_3x" tools:ignore="UnusedResources">24sp</dimen>
+    <dimen name="main_textSize_4x">28sp</dimen>
+    <dimen name="main_textSize_5x">32sp</dimen>
+    <dimen name="main_textSize_6x">50sp</dimen>
+    <dimen name="main_textSize_7x">76sp</dimen>
+
+    <dimen name="main_toolbar_elevation">8dp</dimen>
+    <dimen name="main_header_height">256dp</dimen>
+    <dimen name="main_avatar_size">96dp</dimen>
+    <dimen name="main_card_elevation">8dp</dimen>
+    <dimen name="main_card_cornerRadius">4dp</dimen>
+    <dimen name="main_selection_bar_height">4dp</dimen>
+
+    <dimen name="dashboard_card_image_size">58dp</dimen>
+
+    <dimen name="assistant_imgIcon_size">128dp</dimen>
+
+    <dimen name="player_selection_item_imgAvatar_size">40dp</dimen>
+    <dimen name="img_gameRight_height">226dp</dimen>
+
+</resources>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <data>
+
+        <variable
+            name="vm"
+            type="es.iessaladillo.pedrojoya.stroop.ui.result.ResultFragmentViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/main_header"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/main_header_height"
+            android:background="@color/primary">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@android:color/transparent"
+                android:elevation="@dimen/main_toolbar_elevation"
+                android:theme="@style/AppTheme.AppBarOverlay"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                tools:title="Results" />
+
+
+            <ImageView
+                android:id="@+id/dashboard_imgHeader"
+                setAvatar="@{vm.playerGame.player}"
+                android:layout_width="@dimen/main_avatar_size"
+                android:layout_height="0dp"
+                android:contentDescription="@string/dashboard_imgPlay"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="h,1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar"
+                tools:src="@drawable/avatar_02_man" />
+
+            <TextView
+                android:id="@+id/playerCreation_edtHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{vm.playerGame.player == null ? @string/player_selection_no_players_yet : vm.playerGame.player.name }"
+
+                android:textColor="@color/white"
+                android:textSize="@dimen/main_textSize_3x"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/dashboard_imgHeader"
+                app:layout_constraintStart_toStartOf="@+id/dashboard_imgHeader"
+                app:layout_constraintTop_toBottomOf="@+id/dashboard_imgHeader"
+                tools:text="Baldomero" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_header"
+            app:layout_constraintVertical_bias="0.060000002">
+
+
+            <TextView
+                android:id="@+id/lbl_results_results"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/main_margin_2x"
+                android:text="@string/game_result_lblResults"
+                android:textAllCaps="true"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textColor="@color/accent"
+                android:textSize="@dimen/main_textSize_3x" />
+
+
+            <TextView
+                android:id="@+id/lbl_results_correct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/main_margin_1x"
+                android:text="@string/game_result_lblCorrectLabel"
+                android:textSize="@dimen/main_textSize_1x" />
+
+
+            <TextView
+                android:id="@+id/lbl_results_correct_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/accent"
+                android:textSize="@dimen/main_textSize_2x"
+                app:setInteger="@{vm.playerGame.game.correct}"
+                tools:text="9" />
+
+            <TextView
+                android:id="@+id/lbl_results_incorrect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/main_margin_1x"
+                android:text="@string/game_result_lblIncorrectLabel"
+                android:textSize="@dimen/main_textSize_1x" />
+
+            <TextView
+                android:id="@+id/lbl_results_incorrect_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/accent"
+                android:textSize="@dimen/main_textSize_2x"
+                app:setInteger="@{vm.playerGame.game.incorrect}"
+                tools:text="0" />
+
+            <TextView
+                android:id="@+id/lbl_results_points"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/main_margin_1x"
+                android:text="@string/game_result_lblPointsLabel"
+                android:textSize="@dimen/main_textSize_1x" />
+
+            <TextView
+                android:id="@+id/lbl_results_points_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/accent"
+                android:textSize="@dimen/main_textSize_2x"
+                app:setInteger="@{vm.playerGame.game.points}"
+                tools:text="90" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+</layout>

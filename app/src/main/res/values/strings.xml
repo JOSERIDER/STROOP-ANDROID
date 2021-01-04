@@ -1,0 +1,100 @@
+<resources>
+
+    <string name="app_name">Stroop</string>
+
+    <string name="help_title">Help</string>
+    <string name="help_accept">Accept</string>
+
+    <string name="dashboard_title">Stroop</string>
+    <string name="dashboard_help_description">To start playing you must create a player or select a player among existing, by clicking on player button in the dashboard</string>
+    <string name="dashboard_imgAvatar">Avatar</string>
+    <string name="dashboard_imgPlay">Play</string>
+    <string name="dashboard_lblPlay">Play</string>
+    <string name="dashboard_imgSettings">Settings</string>
+    <string name="dashboard_lblSettings">Settings</string>
+    <string name="dashboard_imgRanking">Ranking</string>
+    <string name="dashboard_lblRanking">Ranking</string>
+    <string name="dashboard_imgAssistant">Assistant</string>
+    <string name="dashboard_lblAssistant">Assistant</string>
+    <string name="dashboard_imgPlayer">Player</string>
+    <string name="dashboard_imgAbout">About</string>
+    <string name="dashboard_lblAbout">About</string>
+    <string name="dashboard_lblPlayer">Player</string>
+
+    <string name="about_lblDescription">This application is a project for the 2019/20 course \"Multimedia and mobile programming\" in Saladillo High School, Algeciras</string>
+    <string name="about_title">About</string>
+
+    <string name="assistant_btnFinish">Finish</string>
+    <string name="assistant_imgIcon">Option</string>
+    <string name="assistant_stroopDescription">The Stroop effect allows to measure the interference in the reaction time of people when the name of a written color painted with a color that does not correspond to the written name</string>
+    <string name="assistant_playDescription">From here you can measure your rent by trying the Stroop test, in which you must indicate if the name of the color corresponds to the color of the word</string>
+    <string name="assistant_settingsDescription">Set the game mode, you can define play by time, by words, or select the initial level among other settings</string>
+    <string name="assistant_rankingDescription">Consult the ranking of points obtained in each game, as you play you will improve your score</string>
+    <string name="assistant_assistantDescription">Still not clear on how the application works? Don\'t worry, from here you can go back to the game instructions</string>
+    <string name="assistant_playerDescription">The nickname is fundamental if you want to test your retention, since it will allow us to know which user has played and which is his position in the ranking, press this option if you want to enter a new player</string>
+    <string name="assistant_aboutDescription">This application is a project for the 2019/20 course \"Multimedia and mobile programming\" in Saladillo High School, Algeciras</string>
+    <string name="assistant_finishDescription">And that\'s it, now you can start playing, press start and test your retention!</string>
+    <string name="assistant_title">Assistant</string>
+
+    <string name="settings_title">Settings</string>
+    <string name="settings_help_description">Here you can setup then game options</string>
+
+    <string name="player_selection_no_players_yet">No players yet</string>
+    <string name="player_selection_title">Player selection</string>
+    <string name="player_selection_imgAvatar">Avatar of the selected player</string>
+    <string name="player_selection_item_imgAvatar">Player\'s avatar</string>
+    <string name="player_selection_no_player_selected">No player selected</string>
+    <string name="player_selection_help_description">Choose a player in the list. If you want, you can press the menu item to edit the current player, or press the button to create a new player.</string>
+    <string name="player_selection_btnEdit">Edit</string>
+
+    <string name="player_edition_txtName">(nickname)</string>
+    <string name="player_edition_title">Player edition</string>
+    <string name="player_edition_mnuDelete">Delete player</string>
+    <string name="player_edition_help_description">Here you can change the nickname and the avatar of the current player</string>
+    <string name="player_edition_no_avatars_yet">No avatars yet</string>
+
+    <string name="game_lblWordsLabel">Words</string>
+    <string name="game_lblCorrectLabel">Correct</string>
+    <string name="game_yellow">Yellow</string>
+    <string name="game_blue">Blue</string>
+    <string name="game_red">Red</string>
+    <string name="game_green">Green</string>
+    <string name="game_btnWrong">Wrong</string>
+    <string name="game_btnRight">Right</string>
+    <string name="game_points">Points</string>
+    <string name="game_attempts">Attempts</string>
+    <string name="game_error_inserting_player">Error inserting player</string>
+
+    <string name="game_result_lblResults">Results</string>
+    <string name="game_result_lblCorrectLabel">Correct answers</string>
+    <string name="game_result_lblIncorrectLabel">Incorrect answers</string>
+    <string name="game_result_lblPointsLabel">Points</string>
+    <string name="game_result_title">Results</string>
+
+    <string name="player_creation_help_description">In this screen you can create a new player</string>
+    <string name="player_creation_title">Player creation</string>
+    <string name="player_creation_error_inserting_player">Error inserting player</string>
+
+    <string name="ranking_item_gameMode">Game mode:</string>
+    <string name="ranking_no_games_yet">No games yet</string>
+    <string name="ranking_lblGameMode">Game mode</string>
+    <string name="ranking_spnGameMode_all">All</string>
+    <string name="ranking_spnGameMode_time">Time</string>
+    <string name="ranking_spnGameMode_attempts">Attempts</string>
+    <string name="ranking_title">Ranking</string>
+    <string name="ranking_help_description">You can filter the game results by game mode</string>
+
+    <string name="ranking_item_words">Words:</string>
+    <string name="ranking_item_correct">Correct:</string>
+    <string name="ranking_item_time">Minutes:</string>
+
+    <string name="player_deletion_title">Player deletion</string>
+    <string name="player_deletion_message">Are you sure to delete the current player? All their games will be deleted too</string>
+    <string name="player_deletion_yes">Yes</string>
+    <string name="player_deletion_no">No</string>
+    <string name="main_img_avatar_description">Avatar icon</string>
+    <string name="img_dashboard_description">icon dashboard</string>
+    <string name="player_creation_hint">(nickname)</string>
+    <string name="ranking_item_minutes">Minutes</string>
+
+</resources>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <data>
+        <variable
+            name="vm"
+            type="es.iessaladillo.pedrojoya.stroop.ui.player.playerEdition.PlayerEditionViewModel" />
+
+        <variable
+            name="playerSelectionDirection"
+            type="androidx.navigation.NavDirections" />
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/main_header"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/main_header_height"
+            android:background="@color/primary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@android:color/transparent"
+                android:elevation="@dimen/main_toolbar_elevation"
+                android:theme="@style/AppTheme.AppBarOverlay"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+
+            <ImageView
+                android:id="@+id/dashboard_imgHeader"
+                android:layout_width="@dimen/main_avatar_size"
+                android:layout_height="0dp"
+                android:contentDescription="@string/dashboard_imgPlay"
+                setResource="@{vm.playerAvatar}"
+                tools:src="@drawable/avatar_02_man"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="h,1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar"
+                app:layout_constraintVertical_bias="0.23" />
+
+            <EditText
+                android:id="@+id/playerEdition_edtHeader"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/main_margin_2x"
+                android:backgroundTint="@color/white"
+                android:gravity="center"
+                android:hint="@string/player_creation_hint"
+                android:singleLine="true"
+                android:textColorHint="@color/whiteHint"
+                android:text="@={vm.playerName}"
+                android:selectAllOnFocus="true"
+                android:imeOptions="actionDone"
+                tools:text="Baldomero"
+                android:textColor="@color/white"
+                android:textSize="@dimen/main_textSize_3x"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dashboard_imgHeader" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcl_playerEdition"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/main_margin_1x"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_header" />
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_playerEdition_save_player"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/main_margin_2x"
+            android:src="@drawable/ic_save_black_24dp"
+            android:tint="@color/white"
+            android:enabled="@{vm.valid}"
+            android:onClick="@{() -> vm.savePlayer()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

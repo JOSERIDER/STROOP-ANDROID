@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Estos recursos no son traducibles, ya que corresponden a valores que son usados
+         desde código, en las preferencias y en la base de datos -->
+
+    <string name="ranking_spnGameMode_all_value" translatable="false">All</string>
+    <string name="ranking_spnGameMode_time_value" translatable="false">Time</string>
+    <string name="ranking_spnGameMode_attempts_value" translatable="false">Attempts</string>
+    <string-array name="ranking_spnGameMode">
+        <item>@string/ranking_spnGameMode_all</item>
+        <item>@string/ranking_spnGameMode_time</item>
+        <item>@string/ranking_spnGameMode_attempts</item>
+    </string-array>
+    <string-array name="ranking_spnGameMode_values">
+        <item>@string/ranking_spnGameMode_all_value</item>
+        <item>@string/ranking_spnGameMode_time_value</item>
+        <item>@string/ranking_spnGameMode_attempts_value</item>
+    </string-array>
+
+    <string-array name="prefGameMode_entries">
+        <item>@string/ranking_spnGameMode_time</item>
+        <item>@string/ranking_spnGameMode_attempts</item>
+    </string-array>
+    <string-array name="prefGameMode_entryValues">
+        <item>@string/ranking_spnGameMode_time_value</item>
+        <item>@string/ranking_spnGameMode_attempts_value</item>
+    </string-array>
+    <string name="prefGameMode_defaultValue">@string/ranking_spnGameMode_time_value</string>
+    <string name="prefGameMode_key" translatable="false">prefGameMode</string>
+
+    <string name="prefRankingFilter_defaultValue">@string/ranking_spnGameMode_all_value</string>
+    <string name="prefRankingFilter_key" translatable="false">prefRankingFilter</string>
+
+    <string name="prefGameTime_value_60" translatable="false">60000</string>
+    <string name="prefGameTime_value_120" translatable="false">120000</string>
+    <string name="prefGameTime_value_180" translatable="false">180000</string>
+    <string name="prefGameTime_value_240" translatable="false">240000</string>
+    <string name="prefGameTime_value_300" translatable="false">300000</string>
+    <string-array name="prefGameTime_entryValues">
+        <item>@string/prefGameTime_value_60</item>
+        <item>@string/prefGameTime_value_120</item>
+        <item>@string/prefGameTime_value_180</item>
+        <item>@string/prefGameTime_value_240</item>
+        <item>@string/prefGameTime_value_300</item>
+    </string-array>
+    <string name="prefGameTime_defaultValue">@string/prefGameTime_value_60</string>
+    <string name="prefGameTime_key" translatable="false">prefGameTime</string>
+
+    <string name="prefWordTime_value_500" translatable="false">500</string>
+    <string name="prefWordTime_value_1000" translatable="false">1000</string>
+    <string name="prefWordTime_value_2000" translatable="false">2000</string>
+    <string-array name="prefWordTime_entryValues">
+        <item>@string/prefWordTime_value_500</item>
+        <item>@string/prefWordTime_value_1000</item>
+        <item>@string/prefWordTime_value_2000</item>
+    </string-array>
+    <string name="prefWordTime_defaultValue" translatable="false">@string/prefWordTime_value_1000</string>
+    <string name="prefWordTime_key" translatable="false">prefWordTime</string>
+
+    <string name="prefAttempts_key" translatable="false">prefAttempts</string>
+    <string name="prefAttempts_defaultValue" translatable="false">5</string>
+
+</resources>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="prefAttempts_dialogTitle">Number of attempts</string>
+    <string name="prefAttempts_title">Number of attempts</string>
+
+    <string name="prefGameCategory_title">GAME</string>
+    <string name="prefGameMode_title">Game mode</string>
+
+    <string name="prefGameTime_title">Game time</string>
+    <string-array name="prefGameTime_entries">
+        <item>1 minute</item>
+        <item>2 minutes</item>
+        <item>3 minutes</item>
+        <item>4 minutes</item>
+        <item>5 minutes</item>
+    </string-array>
+
+
+
+    <string name="prefWordTime_title">Word time</string>
+    <string-array name="prefWordTime_entries">
+        <item>Half a second</item>
+        <item>1 second</item>
+        <item>2 seconds</item>
+    </string-array>
+
+    <string name="prefRankingCategory_title">RANKING</string>
+
+    <string name="prefRankingFilter_title">Ranking filter default</string>
+</resources>

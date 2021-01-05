@@ -10,14 +10,21 @@ import com.google.android.material.tabs.TabLayoutMediator
 import es.iessaladillo.pedrojoya.stroop.PREF_KEY_FIRST_TIME
 import es.iessaladillo.pedrojoya.stroop.R
 import es.iessaladillo.pedrojoya.stroop.base.OnToolbarAvailableListener
+import es.iessaladillo.pedrojoya.stroop.base.PreferencesManager
 import es.iessaladillo.pedrojoya.stroop.databinding.AssistantFragmentBinding
 import kotlinx.android.synthetic.main.about_fragment.toolbar
 import kotlinx.android.synthetic.main.assistant_fragment.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class AssistantFragment : Fragment(R.layout.assistant_fragment) {
 
 
     private val binding:AssistantFragmentBinding by viewBinding()
+
+    private val preferencesManager: PreferencesManager by lazy {
+        PreferencesManager(requireContext())
+    }
 
     private val preferences: SharedPreferences by lazy {
         requireContext().getSharedPreferences("app_pref", Context.MODE_PRIVATE)
@@ -59,7 +66,9 @@ class AssistantFragment : Fragment(R.layout.assistant_fragment) {
     }
 
     private fun finish() {
-        preferences.edit().putBoolean(PREF_KEY_FIRST_TIME, false).apply()
+        GlobalScope.launch {
+            preferencesManager.setFirstTime(false)
+        }
         requireActivity().onBackPressed()
     }
 

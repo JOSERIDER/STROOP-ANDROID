@@ -3,13 +3,14 @@ package es.iessaladillo.pedrojoya.stroop
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import es.iessaladillo.pedrojoya.stroop.data.pojo.Player
 
 
 @BindingAdapter("setColorText")
 fun TextView.setColorText( color:Int ){
-    setTextColor(resources.getColor(color))
+    setTextColor(ContextCompat.getColor(context,color))
 }
 
 @BindingAdapter("setAvatar")

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -36,7 +37,6 @@ class PlayerSelectionFragment : Fragment(R.layout.player_selection_fragment) {
     }
 
 
-
     private val viewModel: PlayerSelectionViewModel by viewModels {
         PlayerSelectionViewModelFactory(
             PlayerRepositoryImp(StroopDatabase.getInstance(requireContext()).playerDao),
@@ -63,18 +63,20 @@ class PlayerSelectionFragment : Fragment(R.layout.player_selection_fragment) {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.helpDialogDestination -> navController.navigate( PlayerSelectionFragmentDirections.openHelpDialogFragment(
-                MESSAGE_ID_HELP_PLAYER_SELECTION))
+            R.id.helpDialogDestination -> navController.navigate(
+                PlayerSelectionFragmentDirections.openHelpDialogFragment(
+                    MESSAGE_ID_HELP_PLAYER_SELECTION
+                )
+            )
             else -> return super.onOptionsItemSelected(item)
         }
         return true
     }
 
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setupBinding()
-        listener.onToolbarCreated(toolbar)
+        listener.onToolbarCreated(binding.toolbar)
         observeLiveData()
         setupViews()
     }
@@ -96,7 +98,7 @@ class PlayerSelectionFragment : Fragment(R.layout.player_selection_fragment) {
     }
 
     private fun observePlayerId() {
-        viewModel.currentPlayerId.observe(viewLifecycleOwner, Observer { playerId ->
+        viewModel.currentPlayerId.observe(viewLifecycleOwner, Observer {
             playerSelectionAdapter.notifyDataSetChanged()
         })
     }
@@ -118,7 +120,7 @@ class PlayerSelectionFragment : Fragment(R.layout.player_selection_fragment) {
     }
 
     private fun setupRcl() {
-        rcl_playerSelection.run {
+       binding.rclPlayerSelection.run {
             layoutManager = GridLayoutManager(
                 requireContext(),
                 requireActivity().resources.getInteger(R.integer.player_selection_numColumns)
@@ -131,7 +133,6 @@ class PlayerSelectionFragment : Fragment(R.layout.player_selection_fragment) {
     private fun createPlayer() {
         navController.navigate(R.id.open_playerCreationFragment)
     }
-
 
 
 }

@@ -2,6 +2,8 @@ package es.iessaladillo.pedrojoya.stroop.ui.game
 
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.View
+import android.viewbinding.library.fragment.viewBinding
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -42,12 +44,12 @@ class GameFragment : Fragment(R.layout.game_fragment) {
     private var wordTime = 0
     private var attempts = 0
 
-    private val appPrefereces: SharedPreferences by lazy {
+    private val appPreferences: SharedPreferences by lazy {
         requireActivity().getSharedPreferences("app_pref", AppCompatActivity.MODE_PRIVATE)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         checkCurrentUser()
         setupBinding()
         getPreferences()
@@ -55,7 +57,7 @@ class GameFragment : Fragment(R.layout.game_fragment) {
     }
 
     private fun checkCurrentUser() {
-        appPrefereces.getLongLiveData(PREF_KEY_CURRENT_PLAYER_ID_KEY, NO_PLAYER)
+        appPreferences.getLongLiveData(PREF_KEY_CURRENT_PLAYER_ID_KEY, NO_PLAYER)
             .observe(viewLifecycleOwner) { userId ->
                 if (userId == NO_PLAYER) {
                     navController.navigate(GameFragmentDirections.openPlayerSelectionFromGameFragment())
@@ -85,7 +87,10 @@ class GameFragment : Fragment(R.layout.game_fragment) {
                 getString(R.string.prefWordTime_key),
                 requireActivity().resources.getString(R.string.prefWordTime_defaultValue)
             )?.toInt()!!
-           attempts = getString(getString(R.string.prefAttempts_key),getString(R.string.prefAttempts_defaultValue))?.toInt()!!
+            attempts = getString(
+                getString(R.string.prefAttempts_key),
+                getString(R.string.prefAttempts_defaultValue)
+            )?.toInt()!!
         }
 
     }
@@ -111,7 +116,7 @@ class GameFragment : Fragment(R.layout.game_fragment) {
 
     private fun startGame() {
         viewModel.setAttemptsNumberDefault(attempts)
-        viewModel.startGameThread(gameTime,wordTime)
+        viewModel.startGameThread(gameTime, wordTime)
     }
 
 

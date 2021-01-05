@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import es.iessaladillo.pedrojoya.stroop.R
+import es.iessaladillo.pedrojoya.stroop.databinding.AssistantFragmentBinding
+import es.iessaladillo.pedrojoya.stroop.databinding.AssistantPageBinding
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.assistant_page.*
 
@@ -19,10 +21,12 @@ class AssistantFragmentAdapter(private val application: Application) : RecyclerV
 
     lateinit var finishButton: onClickListener
 
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val itemView = layoutInflater.inflate(R.layout.assistant_page, parent, false)
-        return ViewHolder(itemView)
+        val binding = AssistantPageBinding.inflate(layoutInflater, parent,false)
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -31,11 +35,10 @@ class AssistantFragmentAdapter(private val application: Application) : RecyclerV
 
     override fun getItemCount(): Int = NUMBER_OF_PAGES
 
-    inner class ViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView),
-        LayoutContainer {
+    inner class ViewHolder(private val binding: AssistantPageBinding) : RecyclerView.ViewHolder(binding.root) {
 
         init {
-            btn_assistant_finish.setOnClickListener{ finishButton(bindingAdapterPosition) }
+            binding.btnAssistantFinish.setOnClickListener{ finishButton(bindingAdapterPosition) }
         }
 
         fun bind(position: Int) {
@@ -59,11 +62,11 @@ class AssistantFragmentAdapter(private val application: Application) : RecyclerV
 
         @SuppressLint("NewApi")
         private fun setValues(iconId:Int, description:Int, backgroundColor:Int, isLastPage: Boolean = false){
-            img_assistant_icon.setImageResource(iconId)
-            lbl_assistant_description.text = application.getString(description)
-                assistant_page_root.setBackgroundColor( application.getColor(backgroundColor))
+            binding.imgAssistantIcon.setImageResource(iconId)
+            binding.lblAssistantDescription.text = application.getString(description)
+                binding.assistantPageRoot.setBackgroundColor( application.getColor(backgroundColor))
             if (isLastPage){
-                btn_assistant_finish.visibility = View.VISIBLE
+                binding.btnAssistantFinish.visibility = View.VISIBLE
             }
         }
 

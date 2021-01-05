@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.yogacp:android-viewbinding:1.0.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/cc578ebab1f9eb85fc5ec5a100d287d2/jetified-android-viewbinding-1.0.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/cc578ebab1f9eb85fc5ec5a100d287d2/jetified-android-viewbinding-1.0.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/cc578ebab1f9eb85fc5ec5a100d287d2/jetified-android-viewbinding-1.0.0/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.yogacp/android-viewbinding/1.0.0/deb24781f7428d295fa07519c236e8046a8ce4cd/android-viewbinding-1.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

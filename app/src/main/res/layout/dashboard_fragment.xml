@@ -128,15 +128,15 @@
                     <ImageView
                         android:id="@+id/dashboard_imgPlay"
                         android:layout_width="@dimen/dashboard_card_image_size"
-                        android:layout_height="0dp"
+                        android:layout_height="@dimen/dashboard_card_image_size"
                         android:layout_margin="@dimen/main_margin_1x"
                         android:contentDescription="@string/dashboard_imgPlay"
                         android:src="@drawable/ic_play_black_24dp"
-                        android:tint="@color/playOption"
                         app:layout_constraintDimensionRatio="h,1:1"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/playOption" />
 
 
                     <TextView
@@ -178,17 +178,16 @@
 
                     <ImageView
                         android:id="@+id/dashboard_imgSettings"
-
                         android:layout_width="@dimen/dashboard_card_image_size"
-                        android:layout_height="0dp"
+                        android:layout_height="@dimen/dashboard_card_image_size"
                         android:layout_margin="@dimen/main_margin_1x"
                         android:contentDescription="@string/dashboard_imgSettings"
                         android:src="@drawable/ic_settings_black_24dp"
-                        android:tint="@color/settingsOption"
                         app:layout_constraintDimensionRatio="h,1:1"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/settingsOption" />
 
 
                     <TextView
@@ -230,17 +229,16 @@
 
                     <ImageView
                         android:id="@+id/dashboard_imgRanking"
-
-                        android:layout_width="60dp"
-                        android:layout_height="58dp"
+                        android:layout_width="@dimen/dashboard_card_image_size"
+                        android:layout_height="@dimen/dashboard_card_image_size"
                         android:layout_margin="@dimen/main_margin_1x"
                         android:contentDescription="@string/dashboard_imgRanking"
                         android:src="@drawable/ic_ranking_black_24dp"
-                        android:tint="@color/rankingOption"
                         app:layout_constraintDimensionRatio="h,1:1"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/rankingOption" />
 
 
                     <TextView
@@ -282,17 +280,16 @@
 
                     <ImageView
                         android:id="@+id/dashboard_imgAssistant"
-
-                        android:layout_width="60dp"
-                        android:layout_height="58dp"
+                        android:layout_width="@dimen/dashboard_card_image_size"
+                        android:layout_height="@dimen/dashboard_card_image_size"
                         android:layout_margin="@dimen/main_margin_1x"
                         android:contentDescription="@string/dashboard_imgAssistant"
                         android:src="@drawable/ic_assistant_black_24dp"
-                        android:tint="@color/assistantOption"
                         app:layout_constraintDimensionRatio="h,1:1"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/assistantOption" />
 
 
                     <TextView
@@ -335,17 +332,16 @@
 
                     <ImageView
                         android:id="@+id/dashboard_imgPlayer"
-
-                        android:layout_width="60dp"
-                        android:layout_height="58dp"
+                        android:layout_width="@dimen/dashboard_card_image_size"
+                        android:layout_height="@dimen/dashboard_card_image_size"
                         android:layout_margin="@dimen/main_margin_1x"
                         android:contentDescription="@string/dashboard_imgPlayer"
                         android:src="@drawable/ic_player_black_24dp"
-                        android:tint="@color/playerOption"
                         app:layout_constraintDimensionRatio="h,1:1"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/playerOption" />
 
 
                     <TextView
@@ -389,17 +385,16 @@
 
                     <ImageView
                         android:id="@+id/dashboard_imgAbout"
-
-                        android:layout_width="60dp"
-                        android:layout_height="58dp"
+                        android:layout_width="@dimen/dashboard_card_image_size"
+                        android:layout_height="@dimen/dashboard_card_image_size"
                         android:layout_margin="@dimen/main_margin_1x"
                         android:contentDescription="@string/dashboard_imgAbout"
                         android:src="@drawable/ic_about_black_24dp"
-                        android:tint="@color/aboutOption"
                         app:layout_constraintDimensionRatio="h,1:1"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/aboutOption" />
 
 
                     <TextView

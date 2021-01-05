@@ -3,34 +3,32 @@ package es.iessaladillo.pedrojoya.stroop.ui.assistant
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.View
+import android.viewbinding.library.fragment.viewBinding
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavController
-import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
 import es.iessaladillo.pedrojoya.stroop.PREF_KEY_FIRST_TIME
 import es.iessaladillo.pedrojoya.stroop.R
 import es.iessaladillo.pedrojoya.stroop.base.OnToolbarAvailableListener
+import es.iessaladillo.pedrojoya.stroop.databinding.AssistantFragmentBinding
 import kotlinx.android.synthetic.main.about_fragment.toolbar
 import kotlinx.android.synthetic.main.assistant_fragment.*
 
 class AssistantFragment : Fragment(R.layout.assistant_fragment) {
 
 
-    private val prefereces: SharedPreferences by lazy {
+    private val binding:AssistantFragmentBinding by viewBinding()
+
+    private val preferences: SharedPreferences by lazy {
         requireContext().getSharedPreferences("app_pref", Context.MODE_PRIVATE)
     }
     private lateinit var listener: OnToolbarAvailableListener
-
-    private val navController: NavController by lazy {
-        findNavController()
-    }
 
     private val adapter: AssistantFragmentAdapter by lazy {
         AssistantFragmentAdapter(requireActivity().application).apply {
             finishButton = { finish() }
         }
     }
-
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -44,25 +42,24 @@ class AssistantFragment : Fragment(R.layout.assistant_fragment) {
         }
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setupToolbar()
         setupViewPager()
-
     }
 
     private fun setupToolbar() {
-        listener.onToolbarCreated(toolbar)
+        listener.onToolbarCreated(binding.toolbar)
     }
 
     private fun setupViewPager() {
-        viewPager.adapter = adapter
-        TabLayoutMediator(tabLayout, viewPager) { _, _ ->
+        binding.viewPager.adapter = adapter
+        TabLayoutMediator(binding.tabLayout, binding.viewPager) { _, _ ->
         }.attach()
     }
 
     private fun finish() {
-        prefereces.edit().putBoolean(PREF_KEY_FIRST_TIME, false).apply()
+        preferences.edit().putBoolean(PREF_KEY_FIRST_TIME, false).apply()
         requireActivity().onBackPressed()
     }
 

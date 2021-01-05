@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import es.iessaladillo.pedrojoya.stroop.NO_AVATAR_SELECTED
 import es.iessaladillo.pedrojoya.stroop.R
 import es.iessaladillo.pedrojoya.stroop.avatars
+import es.iessaladillo.pedrojoya.stroop.databinding.AvatarSelectionCardBinding
+import es.iessaladillo.pedrojoya.stroop.databinding.PlayerCreationFragmentBinding
 import es.iessaladillo.pedrojoya.stroop.extensions.getValue
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.avatar_selection_card.view.*
@@ -22,23 +24,24 @@ class PlayerCreationAdapter(private val viewModel: PlayerCreationViewModel) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val itemView = layoutInflater.inflate(R.layout.avatar_selection_card, parent, false)
-        return ViewHolder(itemView)
+        val binding = AvatarSelectionCardBinding.inflate(layoutInflater,parent,false)
+        return ViewHolder(binding)
     }
 
     override fun getItemCount(): Int = avatars.size
 
 
-    inner class ViewHolder(override val containerView: View) :
-        RecyclerView.ViewHolder(containerView.rootView), LayoutContainer {
+    inner class ViewHolder(private val binding: AvatarSelectionCardBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         init {
-            containerView.rootView.setOnClickListener { onAvatarSelected(bindingAdapterPosition) }
+            binding.root.setOnClickListener { onAvatarSelected(bindingAdapterPosition) }
         }
 
         fun bind(position: Int) {
             val avatarSelected = viewModel.avatarSelectedPosition.getValue(NO_AVATAR_SELECTED)
-            containerView.img_avatarCard.setImageResource(avatars[position])
-            containerView.view_avatarCard_isSelected.visibility =
+          binding.imgAvatarCard.setImageResource(avatars[position])
+           binding.viewAvatarCardIsSelected.visibility =
                 if (avatarSelected == position) View.VISIBLE else View.INVISIBLE
 
         }

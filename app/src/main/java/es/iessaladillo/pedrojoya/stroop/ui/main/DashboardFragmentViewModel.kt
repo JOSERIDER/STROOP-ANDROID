@@ -20,7 +20,10 @@ class DashboardFragmentViewModel(private val playerRepository: PlayerRepository,
         application.getSharedPreferences("app_pref", Context.MODE_PRIVATE)
     }
 
-    val currentPlayer:LiveData<Player?> =  preferences.getLongLiveData(PREF_KEY_CURRENT_PLAYER_ID_KEY, NO_PLAYER).switchMap {playerId ->
+    val currentPlayer:LiveData<Player?> =  preferences.getLongLiveData(
+        PREF_KEY_CURRENT_PLAYER_ID_KEY,
+        NO_PLAYER
+    ).switchMap {playerId ->
         playerRepository.queryCurrentPlayer(playerId)
     }
 

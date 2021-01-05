@@ -2,6 +2,7 @@ package es.iessaladillo.pedrojoya.stroop .ui
 
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.viewbinding.library.activity.viewBinding
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
@@ -11,14 +12,18 @@ import androidx.navigation.ui.setupWithNavController
 import es.iessaladillo.pedrojoya.stroop.PREF_KEY_FIRST_TIME
 import es.iessaladillo.pedrojoya.stroop.R
 import es.iessaladillo.pedrojoya.stroop.base.OnToolbarAvailableListener
+import es.iessaladillo.pedrojoya.stroop.databinding.MainActivityBinding
 
 
 class MainActivity : AppCompatActivity(), OnToolbarAvailableListener{
 
 
-    private val prefereces:SharedPreferences by lazy {
+    private val preferences:SharedPreferences by lazy {
         getSharedPreferences("app_pref", MODE_PRIVATE)
     }
+
+
+    private val binding :MainActivityBinding by viewBinding()
 
     private val navController:NavController by lazy {
         findNavController(R.id.navHostFragment)
@@ -31,7 +36,7 @@ class MainActivity : AppCompatActivity(), OnToolbarAvailableListener{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
-        val isFistTime = prefereces.getBoolean(PREF_KEY_FIRST_TIME, true)
+        val isFistTime = preferences.getBoolean(PREF_KEY_FIRST_TIME, true)
         if(isFistTime) navController.navigate(R.id.assistantFragmentDestination)
     }
 

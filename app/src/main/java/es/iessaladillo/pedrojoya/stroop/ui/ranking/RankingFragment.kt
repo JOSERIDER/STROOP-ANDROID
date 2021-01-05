@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.View
+import android.viewbinding.library.fragment.viewBinding
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -22,6 +24,7 @@ import es.iessaladillo.pedrojoya.stroop.base.OnToolbarAvailableListener
 import es.iessaladillo.pedrojoya.stroop.base.observeEvent
 import es.iessaladillo.pedrojoya.stroop.data.StroopDatabase
 import es.iessaladillo.pedrojoya.stroop.data.repository.PlayerGameRepositoryImp
+import es.iessaladillo.pedrojoya.stroop.databinding.RankingFragmentBinding
 import es.iessaladillo.pedrojoya.stroop.extensions.doOnItemSelected
 import kotlinx.android.synthetic.main.ranking_fragment.*
 
@@ -38,6 +41,8 @@ class RankingFragment : Fragment(R.layout.ranking_fragment) {
             requireActivity().application
         )
     }
+
+    private val binding:RankingFragmentBinding by viewBinding()
 
     private val navController: NavController by lazy {
         findNavController()
@@ -83,15 +88,14 @@ class RankingFragment : Fragment(R.layout.ranking_fragment) {
     }
 
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setupToolbar()
         observeLiveData()
         setupViews()
     }
 
-
-    private fun setupToolbar() = listener.onToolbarCreated(toolbar)
+    private fun setupToolbar() = listener.onToolbarCreated(binding.toolbar)
 
     private fun observeLiveData() {
         observeGames()
@@ -100,12 +104,12 @@ class RankingFragment : Fragment(R.layout.ranking_fragment) {
 
     private fun observeEmptyView() {
         viewModel.emptyViewVisibility.observe(viewLifecycleOwner, Observer {
-            lbl_emptyView_ranking.visibility = it
+            binding.lblEmptyViewRanking.visibility = it
         })
     }
 
     private fun observeGames() {
-        viewModel.onGamesList.observeEvent(viewLifecycleOwner){gameList ->
+        viewModel.onGamesList.observeEvent(viewLifecycleOwner) { gameList ->
             rankingAdapter.submitList(gameList)
         }
     }
@@ -116,7 +120,7 @@ class RankingFragment : Fragment(R.layout.ranking_fragment) {
     }
 
     private fun setupRcl() {
-        rcl_ranking.run {
+        binding.rclRanking.run {
             layoutManager = GridLayoutManager(requireContext(), 1)
             itemAnimator = DefaultItemAnimator()
             adapter = rankingAdapter
@@ -126,20 +130,29 @@ class RankingFragment : Fragment(R.layout.ranking_fragment) {
     private fun setupSpinner() {
 
         val list: MutableList<GameMode> = enumValues<GameMode>().toMutableList()
-        val spnAdapter = ArrayAdapter<GameMode>(requireContext(), android.R.layout.simple_spinner_item, list
+        val spnAdapter = ArrayAdapter<GameMode>(
+            requireContext(), android.R.layout.simple_spinner_item, list
         ).apply {
             setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         }
-        spn_ranking_filter.run {
+        binding.spnRankingFilter.run {
             adapter = spnAdapter
-            val pos = list.indexOf(GameMode.toGameMode( preferences.getString(getString(R.string.prefRankingFilter_key), getString(R.string.prefRankingFilter_defaultValue))!!))
+            val pos = list.indexOf(
+                GameMode.toGameMode(
+                    preferences.getString(
+                        getString(R.string.prefRankingFilter_key),
+                        getString(R.string.prefRankingFilter_defaultValue)
+                    )!!
+                )
+            )
             setSelection(pos)
         }
     }
 
     override fun onStart() {
         super.onStart()
-        spn_ranking_filter.onItemSelectedListener = spn_ranking_filter.doOnItemSelected { changeGameMode(it as GameMode) }
+        binding.spnRankingFilter.onItemSelectedListener =
+            binding.spnRankingFilter.doOnItemSelected { changeGameMode(it as GameMode) }
     }
 
     private fun changeGameMode(gameMode: GameMode) {

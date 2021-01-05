@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -31,8 +32,11 @@ class PlayerCreationFragment : Fragment(R.layout.player_creation_fragment) {
 
 
     private lateinit var listener: OnToolbarAvailableListener
-    private val viewModel: PlayerCreationViewModel by viewModels{
-        PlayerCreationViewModelFactory(PlayerRepositoryImp(StroopDatabase.getInstance(requireContext()).playerDao),requireActivity().application)
+    private val viewModel: PlayerCreationViewModel by viewModels {
+        PlayerCreationViewModelFactory(
+            PlayerRepositoryImp(StroopDatabase.getInstance(requireContext()).playerDao),
+            requireActivity().application
+        )
     }
     private lateinit var binding: PlayerCreationFragmentBinding
 
@@ -42,21 +46,22 @@ class PlayerCreationFragment : Fragment(R.layout.player_creation_fragment) {
         }
     }
 
-    private val navController:NavController by lazy {
+    private val navController: NavController by lazy {
         findNavController()
     }
 
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.main_menu,menu)
+        inflater.inflate(R.menu.main_menu, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
+        when (item.itemId) {
             R.id.helpDialogDestination -> navController.navigate(
                 PlayerEditionFragmentDirections.openHelpDialogFragment(
                     MESSAGE_ID_HELP_PLAYER_EDITION
-                ))
+                )
+            )
             else -> return super.onOptionsItemSelected(item)
         }
         return true
@@ -74,20 +79,17 @@ class PlayerCreationFragment : Fragment(R.layout.player_creation_fragment) {
         }
     }
 
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        setupToolbar()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setupBinding()
+        setupToolbar()
         observeLiveData()
         observeEvents()
         setupViews()
     }
 
-
-
     private fun setupToolbar() {
-        listener.onToolbarCreated(toolbar)
+        listener.onToolbarCreated(binding.toolbar)
     }
 
     private fun setupBinding() {
@@ -112,7 +114,7 @@ class PlayerCreationFragment : Fragment(R.layout.player_creation_fragment) {
     }
 
     private fun setupImeOption() {
-        playerCreation_edtHeader.setOnEditorActionListener { v, actionId, event ->
+        binding.playerCreationEdtHeader.setOnEditorActionListener { _, actionId, _ ->
             return@setOnEditorActionListener when (actionId) {
                 EditorInfo.IME_ACTION_DONE -> {
                     if (viewModel.valid.value == true) {
@@ -127,7 +129,7 @@ class PlayerCreationFragment : Fragment(R.layout.player_creation_fragment) {
     }
 
     private fun setupRcl() {
-        rcl_playerCreation.run {
+       binding.rclPlayerCreation.run {
             layoutManager = GridLayoutManager(
                 requireContext(),
                 requireActivity().resources.getInteger(R.integer.player_creation_numColumns)
@@ -158,7 +160,7 @@ class PlayerCreationFragment : Fragment(R.layout.player_creation_fragment) {
     }
 
     private fun selectAvatar(avatarSelected: Int) {
-        val lastedAvatarSelected = viewModel.avatarSelectedPosition.getValue( NO_AVATAR_SELECTED)
+        val lastedAvatarSelected = viewModel.avatarSelectedPosition.getValue(NO_AVATAR_SELECTED)
         viewModel.selectAvatar(avatarSelected)
         avatarAdapter.notifyItemChanged(lastedAvatarSelected)
         avatarAdapter.notifyItemChanged(avatarSelected)

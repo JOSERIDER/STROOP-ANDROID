@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -30,26 +31,29 @@ import kotlinx.android.synthetic.main.player_creation_fragment.*
 import kotlinx.android.synthetic.main.player_edition_fragment.*
 import kotlinx.android.synthetic.main.player_edition_fragment.toolbar
 
-class PlayerEditionFragment: Fragment(R.layout.player_edition_fragment) {
+class PlayerEditionFragment : Fragment(R.layout.player_edition_fragment) {
 
 
-    private val args:PlayerEditionFragmentArgs by navArgs()
+    private val args: PlayerEditionFragmentArgs by navArgs()
 
-    private val viewModel:PlayerEditionViewModel by viewModels {
-        PlayerEditionViewModelFactory(PlayerRepositoryImp(StroopDatabase.getInstance(requireContext()).playerDao),requireActivity().application)
+    private val viewModel: PlayerEditionViewModel by viewModels {
+        PlayerEditionViewModelFactory(
+            PlayerRepositoryImp(StroopDatabase.getInstance(requireContext()).playerDao),
+            requireActivity().application
+        )
     }
-    private val deleteDialogViewModel:DeletePlayerDialogFragment.ViewModel by activityViewModels()
+    private val deleteDialogViewModel: DeletePlayerDialogFragment.ViewModel by activityViewModels()
 
     private lateinit var listener: OnToolbarAvailableListener
     private lateinit var binding: PlayerEditionFragmentBinding
 
-    private val avatarEditionAdapter:AvatarEditionCardAdapter by lazy {
+    private val avatarEditionAdapter: AvatarEditionCardAdapter by lazy {
         AvatarEditionCardAdapter(viewModel).apply {
-            onAvatarSelected = { position, avatarResId ->  selectAvatar(position,avatarResId) }
+            onAvatarSelected = { position, avatarResId -> selectAvatar(position, avatarResId) }
         }
     }
 
-    private val navController:NavController by lazy {
+    private val navController: NavController by lazy {
         findNavController()
     }
 
@@ -67,29 +71,32 @@ class PlayerEditionFragment: Fragment(R.layout.player_edition_fragment) {
 
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.player_edition,menu)
+        inflater.inflate(R.menu.player_edition, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
-            R.id.deletePlayerDialogDestination -> navController.navigate(PlayerEditionFragmentDirections.openDeletePlayerDialog(args.playerId))
-            R.id.helpDialogDestination -> navController.navigate(PlayerEditionFragmentDirections.openHelpDialogFragment(MESSAGE_ID_HELP_PLAYER_EDITION))
+        when (item.itemId) {
+            R.id.deletePlayerDialogDestination -> navController.navigate(
+                PlayerEditionFragmentDirections.openDeletePlayerDialog(args.playerId)
+            )
+            R.id.helpDialogDestination -> navController.navigate(
+                PlayerEditionFragmentDirections.openHelpDialogFragment(
+                    MESSAGE_ID_HELP_PLAYER_EDITION
+                )
+            )
             else -> return super.onOptionsItemSelected(item)
         }
         return true
     }
 
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setupBinding()
         observeLiveData()
         observeEvents()
         setupViews()
         setupRcl()
     }
-
-
 
     private fun setupBinding() {
         binding = PlayerEditionFragmentBinding.bind(requireView()).apply {
@@ -106,26 +113,27 @@ class PlayerEditionFragment: Fragment(R.layout.player_edition_fragment) {
     }
 
     private fun setupToolbar() {
-        listener.onToolbarCreated(toolbar)
+        listener.onToolbarCreated(binding.toolbar)
     }
 
     private fun observeLiveData() {
         observeCurrentPlayer()
         observePlayerInserted()
     }
+
     private fun observeEvents() {
         observeDeletionPlayer()
         observeMessage()
     }
 
     private fun observeDeletionPlayer() {
-        deleteDialogViewModel.onDeletePlayer.observeEvent(viewLifecycleOwner){
+        deleteDialogViewModel.onDeletePlayer.observeEvent(viewLifecycleOwner) {
             viewModel.deletePlayer()
         }
     }
 
     private fun observeMessage() {
-        viewModel.onShowMessage.observeEvent(viewLifecycleOwner){
+        viewModel.onShowMessage.observeEvent(viewLifecycleOwner) {
             Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
         }
     }
@@ -150,9 +158,11 @@ class PlayerEditionFragment: Fragment(R.layout.player_edition_fragment) {
     }
 
     private fun setupRcl() {
-        rcl_playerEdition.run {
-            layoutManager = GridLayoutManager(requireContext(),
-            requireActivity().resources.getInteger(R.integer.player_edition_numColumns))
+        binding.rclPlayerEdition.run {
+            layoutManager = GridLayoutManager(
+                requireContext(),
+                requireActivity().resources.getInteger(R.integer.player_edition_numColumns)
+            )
             itemAnimator = DefaultItemAnimator()
             adapter = avatarEditionAdapter
         }
@@ -160,14 +170,14 @@ class PlayerEditionFragment: Fragment(R.layout.player_edition_fragment) {
 
     private fun selectAvatar(position: Int, avatarResId: Int) {
         val lastedAvatarSelected = viewModel.avatarSelectedPosition.getValue(NO_AVATAR_SELECTED)
-        viewModel.selectAvatar(position,avatarResId)
+        viewModel.selectAvatar(position, avatarResId)
         avatarEditionAdapter.notifyItemChanged(lastedAvatarSelected)
         avatarEditionAdapter.notifyItemChanged(position)
     }
 
 
     private fun setupImeOption() {
-        playerEdition_edtHeader.setOnEditorActionListener { _, actionId, _ ->
+        binding.playerEditionEdtHeader.setOnEditorActionListener { _, actionId, _ ->
             return@setOnEditorActionListener when (actionId) {
                 EditorInfo.IME_ACTION_DONE -> {
                     if (viewModel.valid.value == true) {

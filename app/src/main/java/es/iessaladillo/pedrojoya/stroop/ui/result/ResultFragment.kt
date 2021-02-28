@@ -3,6 +3,7 @@ package es.iessaladillo.pedrojoya.stroop.ui.result
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.viewbinding.library.fragment.viewBinding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
@@ -15,7 +16,6 @@ import kotlinx.android.synthetic.main.result_fragment.*
 
 class ResultFragment : Fragment(R.layout.result_fragment) {
 
-
     private val viewModel: ResultFragmentViewModel by viewModels {
         ResultFragmentViewModelFactory(
             PlayerGameRepositoryImp(
@@ -27,7 +27,8 @@ class ResultFragment : Fragment(R.layout.result_fragment) {
     }
 
     private lateinit var listener: OnToolbarAvailableListener
-    private lateinit var binding: ResultFragmentBinding
+    private  val binding: ResultFragmentBinding by viewBinding()
+
     private val args: ResultFragmentArgs by navArgs()
 
     override fun onAttach(context: Context) {
@@ -57,10 +58,9 @@ class ResultFragment : Fragment(R.layout.result_fragment) {
     private fun setupToolbar() = listener.onToolbarCreated(binding.toolbar)
 
     private fun setupBinding() {
-        binding = ResultFragmentBinding.bind(requireView()).apply {
+        binding.run {
             vm = viewModel
             lifecycleOwner = viewLifecycleOwner
         }
     }
-
 }

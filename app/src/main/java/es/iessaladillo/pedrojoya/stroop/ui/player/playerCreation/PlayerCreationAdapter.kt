@@ -8,10 +8,7 @@ import es.iessaladillo.pedrojoya.stroop.NO_AVATAR_SELECTED
 import es.iessaladillo.pedrojoya.stroop.R
 import es.iessaladillo.pedrojoya.stroop.avatars
 import es.iessaladillo.pedrojoya.stroop.databinding.AvatarSelectionCardBinding
-import es.iessaladillo.pedrojoya.stroop.databinding.PlayerCreationFragmentBinding
 import es.iessaladillo.pedrojoya.stroop.extensions.getValue
-import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.avatar_selection_card.view.*
 
 typealias OnclikItem = (position: Int) -> Unit
 

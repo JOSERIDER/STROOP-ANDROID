@@ -166,13 +166,13 @@
             android:contentDescription="@string/game_btnRight"
             android:onClick="@{ () -> vm.checkRight()}"
             android:src="@drawable/ic_right_black_24dp"
-            android:tint="@color/rightAnswer"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/img_game_wrong"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/img_game_wrong"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.0"
+            app:tint="@color/rightAnswer" />
 
         <ImageView
             android:id="@+id/img_game_wrong"
@@ -181,12 +181,12 @@
             android:contentDescription="@string/game_btnWrong"
             android:onClick="@{ () -> vm.checkWrong()}"
             android:src="@drawable/ic_wrong_black_24dp"
-            android:tint="@color/wrongAnswer"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="w,1:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/img_game_right" />
+            app:layout_constraintStart_toEndOf="@+id/img_game_right"
+            app:tint="@color/wrongAnswer" />
 
         <ProgressBar
             android:id="@+id/progressBar_game"

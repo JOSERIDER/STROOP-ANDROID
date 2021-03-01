@@ -11,8 +11,6 @@ import es.iessaladillo.pedrojoya.stroop.PREF_KEY_FIRST_TIME
 import es.iessaladillo.pedrojoya.stroop.R
 import es.iessaladillo.pedrojoya.stroop.base.OnToolbarAvailableListener
 import es.iessaladillo.pedrojoya.stroop.databinding.AssistantFragmentBinding
-import kotlinx.android.synthetic.main.about_fragment.toolbar
-import kotlinx.android.synthetic.main.assistant_fragment.*
 
 class AssistantFragment : Fragment(R.layout.assistant_fragment) {
 

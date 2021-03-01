@@ -10,10 +10,7 @@ import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
 import es.iessaladillo.pedrojoya.stroop.R
 import es.iessaladillo.pedrojoya.stroop.base.OnToolbarAvailableListener
-import es.iessaladillo.pedrojoya.stroop.data.StroopDatabase
-import es.iessaladillo.pedrojoya.stroop.data.repository.PlayerGameRepositoryImp
 import es.iessaladillo.pedrojoya.stroop.databinding.ResultFragmentBinding
-import kotlinx.android.synthetic.main.result_fragment.*
 
 @AndroidEntryPoint
 class ResultFragment : Fragment(R.layout.result_fragment) {

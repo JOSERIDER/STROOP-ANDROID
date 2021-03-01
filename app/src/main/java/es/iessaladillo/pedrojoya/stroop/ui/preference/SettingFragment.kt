@@ -15,7 +15,6 @@ import es.iessaladillo.pedrojoya.stroop.MESSAGE_ID_HELP_SETTINGS
 import es.iessaladillo.pedrojoya.stroop.R
 import es.iessaladillo.pedrojoya.stroop.base.OnToolbarAvailableListener
 import es.iessaladillo.pedrojoya.stroop.databinding.SettingFragmentBinding
-import kotlinx.android.synthetic.main.setting_fragment.*
 
 class SettingFragment : Fragment(R.layout.setting_fragment) {
 

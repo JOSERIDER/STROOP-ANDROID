@@ -23,14 +23,11 @@ import es.iessaladillo.pedrojoya.stroop.NO_AVATAR_SELECTED
 import es.iessaladillo.pedrojoya.stroop.R
 import es.iessaladillo.pedrojoya.stroop.base.OnToolbarAvailableListener
 import es.iessaladillo.pedrojoya.stroop.base.observeEvent
-import es.iessaladillo.pedrojoya.stroop.data.StroopDatabase
-import es.iessaladillo.pedrojoya.stroop.data.repository.PlayerRepositoryImp
 import es.iessaladillo.pedrojoya.stroop.databinding.PlayerEditionFragmentBinding
 import es.iessaladillo.pedrojoya.stroop.extensions.getValue
 import es.iessaladillo.pedrojoya.stroop.ui.dialog.delete.DeletePlayerDialogFragment
 import kotlinx.android.synthetic.main.player_creation_fragment.*
 import kotlinx.android.synthetic.main.player_edition_fragment.*
-import kotlinx.android.synthetic.main.player_edition_fragment.toolbar
 
 @AndroidEntryPoint
 class PlayerEditionFragment : Fragment(R.layout.player_edition_fragment) {

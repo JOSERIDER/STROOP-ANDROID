@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import es.iessaladillo.pedrojoya.stroop.R
 import es.iessaladillo.pedrojoya.stroop.base.OnToolbarAvailableListener
 import es.iessaladillo.pedrojoya.stroop.databinding.AboutFragmentBinding
-import kotlinx.android.synthetic.main.about_fragment.*
 
 class AboutFragment:Fragment(R.layout.about_fragment) {
 

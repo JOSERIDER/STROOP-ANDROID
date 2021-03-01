@@ -3,7 +3,6 @@ package es.iessaladillo.pedrojoya.stroop.ui.game
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
-import android.viewbinding.library.fragment.viewBinding
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -19,8 +18,6 @@ import es.iessaladillo.pedrojoya.stroop.PREF_KEY_CURRENT_PLAYER_ID_KEY
 import es.iessaladillo.pedrojoya.stroop.R
 import es.iessaladillo.pedrojoya.stroop.base.getLongLiveData
 import es.iessaladillo.pedrojoya.stroop.base.observeEvent
-import es.iessaladillo.pedrojoya.stroop.data.StroopDatabase
-import es.iessaladillo.pedrojoya.stroop.data.repository.GameRepositoryImp
 import es.iessaladillo.pedrojoya.stroop.databinding.GameFragmentBinding
 
 @AndroidEntryPoint

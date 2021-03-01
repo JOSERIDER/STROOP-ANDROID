@@ -3,7 +3,6 @@ package es.iessaladillo.pedrojoya.stroop.ui.preference
 import android.os.Bundle
 import android.text.InputType
 import androidx.preference.EditTextPreference
-import androidx.preference.EditTextPreference.OnBindEditTextListener
 import androidx.preference.PreferenceFragmentCompat
 import es.iessaladillo.pedrojoya.stroop.R
 

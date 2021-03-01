@@ -8,20 +8,15 @@ import android.view.MenuItem
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.HiltAndroidApp
 import es.iessaladillo.pedrojoya.stroop.MESSAGE_ID_HELP_PLAYER_SELECTION
 import es.iessaladillo.pedrojoya.stroop.R
 import es.iessaladillo.pedrojoya.stroop.base.OnToolbarAvailableListener
-import es.iessaladillo.pedrojoya.stroop.data.StroopDatabase
-import es.iessaladillo.pedrojoya.stroop.data.repository.PlayerRepositoryImp
 import es.iessaladillo.pedrojoya.stroop.databinding.PlayerSelectionFragmentBinding
-import kotlinx.android.synthetic.main.player_selection_fragment.*
 
 @AndroidEntryPoint
 class PlayerSelectionFragment : Fragment(R.layout.player_selection_fragment) {
@@ -93,13 +88,13 @@ class PlayerSelectionFragment : Fragment(R.layout.player_selection_fragment) {
     }
 
     private fun observePlayerId() {
-        viewModel.currentPlayerId.observe(viewLifecycleOwner, Observer {
+        viewModel.currentPlayerId.observe(viewLifecycleOwner, {
             playerSelectionAdapter.notifyDataSetChanged()
         })
     }
 
     private fun observePlayers() {
-        viewModel.players.observe(viewLifecycleOwner, Observer { playersList ->
+        viewModel.players.observe(viewLifecycleOwner, { playersList ->
             playerSelectionAdapter.submitList(playersList)
         })
     }

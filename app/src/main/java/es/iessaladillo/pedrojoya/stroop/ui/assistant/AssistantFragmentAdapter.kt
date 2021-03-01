@@ -7,10 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import es.iessaladillo.pedrojoya.stroop.R
-import es.iessaladillo.pedrojoya.stroop.databinding.AssistantFragmentBinding
 import es.iessaladillo.pedrojoya.stroop.databinding.AssistantPageBinding
-import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.assistant_page.*
 
 
 const val NUMBER_OF_PAGES = 8

@@ -1,10 +1,7 @@
 package es.iessaladillo.pedrojoya.stroop.ui.ranking
 
-import android.app.Application
-import android.content.SharedPreferences
 import android.view.View
 import androidx.lifecycle.*
-import androidx.preference.PreferenceManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import es.iessaladillo.pedrojoya.stroop.base.Event
 import es.iessaladillo.pedrojoya.stroop.base.enums.GameMode
@@ -14,8 +11,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class RankingFragmentViewModel @Inject constructor(
-    private val playerGameRepository: PlayerGameRepository,
-    private val application: Application
+    private val playerGameRepository: PlayerGameRepository
 ) : ViewModel() {
 
 

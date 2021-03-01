@@ -1,7 +1,5 @@
 package es.iessaladillo.pedrojoya.stroop.base.enums
 
-import androidx.room.TypeConverter
-
 enum class GameMode(val mode: String) {
 
     ALL("All"), TIME("Time"), ATTEMPS("Attempts");

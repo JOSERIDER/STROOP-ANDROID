@@ -11,7 +11,6 @@ import android.viewbinding.library.fragment.viewBinding
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
@@ -20,14 +19,11 @@ import androidx.recyclerview.widget.GridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import es.iessaladillo.pedrojoya.stroop.MESSAGE_ID_HELP_RANKING
 import es.iessaladillo.pedrojoya.stroop.R
-import es.iessaladillo.pedrojoya.stroop.base.enums.GameMode
 import es.iessaladillo.pedrojoya.stroop.base.OnToolbarAvailableListener
+import es.iessaladillo.pedrojoya.stroop.base.enums.GameMode
 import es.iessaladillo.pedrojoya.stroop.base.observeEvent
-import es.iessaladillo.pedrojoya.stroop.data.StroopDatabase
-import es.iessaladillo.pedrojoya.stroop.data.repository.PlayerGameRepositoryImp
 import es.iessaladillo.pedrojoya.stroop.databinding.RankingFragmentBinding
 import es.iessaladillo.pedrojoya.stroop.extensions.doOnItemSelected
-import kotlinx.android.synthetic.main.ranking_fragment.*
 
 @AndroidEntryPoint
 class RankingFragment : Fragment(R.layout.ranking_fragment) {
@@ -99,7 +95,7 @@ class RankingFragment : Fragment(R.layout.ranking_fragment) {
     }
 
     private fun observeEmptyView() {
-        viewModel.emptyViewVisibility.observe(viewLifecycleOwner, Observer {
+        viewModel.emptyViewVisibility.observe(viewLifecycleOwner, {
             binding.lblEmptyViewRanking.visibility = it
         })
     }
@@ -126,7 +122,7 @@ class RankingFragment : Fragment(R.layout.ranking_fragment) {
     private fun setupSpinner() {
 
         val list: MutableList<GameMode> = enumValues<GameMode>().toMutableList()
-        val spnAdapter = ArrayAdapter<GameMode>(
+        val spnAdapter = ArrayAdapter(
             requireContext(), android.R.layout.simple_spinner_item, list
         ).apply {
             setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)

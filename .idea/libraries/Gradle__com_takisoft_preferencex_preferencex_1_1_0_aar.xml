@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.takisoft.preferencex:preferencex:1.1.0@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d6e3f0f17b7539675e338ce245621e82/jetified-preferencex-1.1.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d6e3f0f17b7539675e338ce245621e82/jetified-preferencex-1.1.0/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d6e3f0f17b7539675e338ce245621e82/jetified-preferencex-1.1.0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/027b86a384ac24dcfb74f01c9539ee1d/jetified-preferencex-1.1.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/027b86a384ac24dcfb74f01c9539ee1d/jetified-preferencex-1.1.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/027b86a384ac24dcfb74f01c9539ee1d/jetified-preferencex-1.1.0/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.takisoft.preferencex/preferencex/1.1.0/a30e1581a4c4f9c7b73962ddc0a7895a0140dbd/preferencex-1.1.0-javadoc.jar!/" />

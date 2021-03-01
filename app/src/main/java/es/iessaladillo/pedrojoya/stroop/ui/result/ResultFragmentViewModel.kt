@@ -1,10 +1,13 @@
 package es.iessaladillo.pedrojoya.stroop.ui.result
 
 import androidx.lifecycle.*
+import dagger.hilt.android.lifecycle.HiltViewModel
 import es.iessaladillo.pedrojoya.stroop.data.pojo.PlayerGame
 import es.iessaladillo.pedrojoya.stroop.data.repository.PlayerGameRepository
+import javax.inject.Inject
 
-class ResultFragmentViewModel(private val playerGameRepository: PlayerGameRepository):ViewModel() {
+@HiltViewModel
+class ResultFragmentViewModel @Inject constructor(private val playerGameRepository: PlayerGameRepository):ViewModel() {
 
     private val _currentGame:MutableLiveData<Long> = MutableLiveData()
 

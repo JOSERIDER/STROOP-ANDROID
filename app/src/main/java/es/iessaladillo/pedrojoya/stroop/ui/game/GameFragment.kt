@@ -12,6 +12,7 @@ import androidx.lifecycle.observe
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
+import dagger.hilt.android.AndroidEntryPoint
 import es.iessaladillo.pedrojoya.stroop.NO_GAME
 import es.iessaladillo.pedrojoya.stroop.NO_PLAYER
 import es.iessaladillo.pedrojoya.stroop.PREF_KEY_CURRENT_PLAYER_ID_KEY
@@ -22,6 +23,7 @@ import es.iessaladillo.pedrojoya.stroop.data.StroopDatabase
 import es.iessaladillo.pedrojoya.stroop.data.repository.GameRepositoryImp
 import es.iessaladillo.pedrojoya.stroop.databinding.GameFragmentBinding
 
+@AndroidEntryPoint
 class GameFragment : Fragment(R.layout.game_fragment) {
 
     private val preferences: SharedPreferences by lazy {
@@ -32,12 +34,7 @@ class GameFragment : Fragment(R.layout.game_fragment) {
         findNavController()
     }
 
-    private val viewModel: GameViewModel by viewModels {
-        GameViewModelFactory(
-            requireActivity().application,
-            GameRepositoryImp(StroopDatabase.getInstance(requireContext()).game)
-        )
-    }
+    private val viewModel: GameViewModel by viewModels()
 
     private lateinit var binding: GameFragmentBinding
     private var gameTime = 0

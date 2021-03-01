@@ -17,6 +17,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
+import dagger.hilt.android.AndroidEntryPoint
 import es.iessaladillo.pedrojoya.stroop.MESSAGE_ID_HELP_PLAYER_EDITION
 import es.iessaladillo.pedrojoya.stroop.NO_AVATAR_SELECTED
 import es.iessaladillo.pedrojoya.stroop.R
@@ -31,17 +32,13 @@ import kotlinx.android.synthetic.main.player_creation_fragment.*
 import kotlinx.android.synthetic.main.player_edition_fragment.*
 import kotlinx.android.synthetic.main.player_edition_fragment.toolbar
 
+@AndroidEntryPoint
 class PlayerEditionFragment : Fragment(R.layout.player_edition_fragment) {
-
 
     private val args: PlayerEditionFragmentArgs by navArgs()
 
-    private val viewModel: PlayerEditionViewModel by viewModels {
-        PlayerEditionViewModelFactory(
-            PlayerRepositoryImp(StroopDatabase.getInstance(requireContext()).playerDao),
-            requireActivity().application
-        )
-    }
+    private val viewModel: PlayerEditionViewModel by viewModels()
+
     private val deleteDialogViewModel: DeletePlayerDialogFragment.ViewModel by activityViewModels()
 
     private lateinit var listener: OnToolbarAvailableListener

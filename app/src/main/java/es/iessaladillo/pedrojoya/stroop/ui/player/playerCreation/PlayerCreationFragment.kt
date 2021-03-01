@@ -15,6 +15,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
+import dagger.hilt.android.AndroidEntryPoint
 import es.iessaladillo.pedrojoya.stroop.MESSAGE_ID_HELP_PLAYER_EDITION
 import es.iessaladillo.pedrojoya.stroop.NO_AVATAR_SELECTED
 import es.iessaladillo.pedrojoya.stroop.R
@@ -28,16 +29,13 @@ import es.iessaladillo.pedrojoya.stroop.extensions.getValue
 import es.iessaladillo.pedrojoya.stroop.ui.player.playerEdition.PlayerEditionFragmentDirections
 import kotlinx.android.synthetic.main.player_creation_fragment.*
 
+@AndroidEntryPoint
 class PlayerCreationFragment : Fragment(R.layout.player_creation_fragment) {
 
-
     private lateinit var listener: OnToolbarAvailableListener
-    private val viewModel: PlayerCreationViewModel by viewModels {
-        PlayerCreationViewModelFactory(
-            PlayerRepositoryImp(StroopDatabase.getInstance(requireContext()).playerDao),
-            requireActivity().application
-        )
-    }
+
+    private val viewModel: PlayerCreationViewModel by viewModels()
+
     private lateinit var binding: PlayerCreationFragmentBinding
 
     private val avatarAdapter: PlayerCreationAdapter by lazy {

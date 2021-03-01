@@ -5,15 +5,18 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import es.iessaladillo.pedrojoya.stroop.NO_AVATAR_SELECTED
 import es.iessaladillo.pedrojoya.stroop.R
 import es.iessaladillo.pedrojoya.stroop.base.Event
 import es.iessaladillo.pedrojoya.stroop.data.pojo.Player
 import es.iessaladillo.pedrojoya.stroop.data.repository.PlayerRepository
 import es.iessaladillo.pedrojoya.stroop.extensions.getValue
+import javax.inject.Inject
 import kotlin.concurrent.thread
 
-class PlayerCreationViewModel(
+@HiltViewModel
+class PlayerCreationViewModel @Inject constructor(
     private val playerRepository: PlayerRepository,
     private val application: Application
 ) : ViewModel() {

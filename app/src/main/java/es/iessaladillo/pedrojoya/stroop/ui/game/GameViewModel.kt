@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.map
 import androidx.preference.PreferenceManager
+import dagger.hilt.android.lifecycle.HiltViewModel
 import es.iessaladillo.pedrojoya.stroop.NO_GAME
 import es.iessaladillo.pedrojoya.stroop.POINTS_PER_CORRECT_ANSWER
 import es.iessaladillo.pedrojoya.stroop.R
@@ -19,10 +20,11 @@ import es.iessaladillo.pedrojoya.stroop.data.pojo.Game
 import es.iessaladillo.pedrojoya.stroop.data.repository.GameRepository
 import es.iessaladillo.pedrojoya.stroop.extensions.getValue
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 import kotlin.concurrent.thread
 
-
-class GameViewModel(
+@HiltViewModel
+class GameViewModel @Inject constructor(
     private val application: Application,
     private val gameRepository: GameRepository
 ) : ViewModel() {

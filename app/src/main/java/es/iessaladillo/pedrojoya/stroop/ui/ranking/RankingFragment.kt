@@ -17,6 +17,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
+import dagger.hilt.android.AndroidEntryPoint
 import es.iessaladillo.pedrojoya.stroop.MESSAGE_ID_HELP_RANKING
 import es.iessaladillo.pedrojoya.stroop.R
 import es.iessaladillo.pedrojoya.stroop.base.enums.GameMode
@@ -28,19 +29,14 @@ import es.iessaladillo.pedrojoya.stroop.databinding.RankingFragmentBinding
 import es.iessaladillo.pedrojoya.stroop.extensions.doOnItemSelected
 import kotlinx.android.synthetic.main.ranking_fragment.*
 
+@AndroidEntryPoint
 class RankingFragment : Fragment(R.layout.ranking_fragment) {
-
 
     private val preferences: SharedPreferences by lazy {
         PreferenceManager.getDefaultSharedPreferences(requireContext())
     }
 
-    private val viewModel: RankingFragmentViewModel by viewModels {
-        RankingFragmentViewModelFactory(
-            PlayerGameRepositoryImp(StroopDatabase.getInstance(requireContext()).playerGameDao),
-            requireActivity().application
-        )
-    }
+    private val viewModel: RankingFragmentViewModel by viewModels()
 
     private val binding:RankingFragmentBinding by viewBinding()
 

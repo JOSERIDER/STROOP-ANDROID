@@ -5,12 +5,15 @@ import android.content.SharedPreferences
 import android.view.View
 import androidx.lifecycle.*
 import androidx.preference.PreferenceManager
+import dagger.hilt.android.lifecycle.HiltViewModel
 import es.iessaladillo.pedrojoya.stroop.base.Event
 import es.iessaladillo.pedrojoya.stroop.base.enums.GameMode
 import es.iessaladillo.pedrojoya.stroop.data.pojo.PlayerGame
 import es.iessaladillo.pedrojoya.stroop.data.repository.PlayerGameRepository
+import javax.inject.Inject
 
-class RankingFragmentViewModel(
+@HiltViewModel
+class RankingFragmentViewModel @Inject constructor(
     private val playerGameRepository: PlayerGameRepository,
     private val application: Application
 ) : ViewModel() {

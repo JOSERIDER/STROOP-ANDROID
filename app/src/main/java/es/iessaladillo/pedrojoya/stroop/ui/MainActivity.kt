@@ -9,19 +9,18 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import dagger.hilt.android.AndroidEntryPoint
 import es.iessaladillo.pedrojoya.stroop.PREF_KEY_FIRST_TIME
 import es.iessaladillo.pedrojoya.stroop.R
 import es.iessaladillo.pedrojoya.stroop.base.OnToolbarAvailableListener
 import es.iessaladillo.pedrojoya.stroop.databinding.MainActivityBinding
 
-
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity(), OnToolbarAvailableListener{
-
 
     private val preferences:SharedPreferences by lazy {
         getSharedPreferences("app_pref", MODE_PRIVATE)
     }
-
 
     private val binding :MainActivityBinding by viewBinding()
 
@@ -44,5 +43,4 @@ class MainActivity : AppCompatActivity(), OnToolbarAvailableListener{
        setSupportActionBar(toolbar)
        toolbar.setupWithNavController(navController,appBarConfiguration)
     }
-
 }

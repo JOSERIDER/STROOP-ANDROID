@@ -6,13 +6,17 @@ import android.content.SharedPreferences
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.switchMap
+import dagger.hilt.android.HiltAndroidApp
+import dagger.hilt.android.lifecycle.HiltViewModel
 import es.iessaladillo.pedrojoya.stroop.NO_PLAYER
 import es.iessaladillo.pedrojoya.stroop.PREF_KEY_CURRENT_PLAYER_ID_KEY
 import es.iessaladillo.pedrojoya.stroop.base.getLongLiveData
 import es.iessaladillo.pedrojoya.stroop.data.pojo.Player
 import es.iessaladillo.pedrojoya.stroop.data.repository.PlayerRepository
+import javax.inject.Inject
 
-class PlayerSelectionViewModel(
+@HiltViewModel
+class PlayerSelectionViewModel @Inject constructor(
     private val playerRepository: PlayerRepository,
     private val application: Application
 ) : ViewModel() {

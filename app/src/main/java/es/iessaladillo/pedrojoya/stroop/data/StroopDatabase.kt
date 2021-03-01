@@ -21,24 +21,4 @@ abstract class StroopDatabase : RoomDatabase() {
     abstract val playerGameDao: PlayerGameDao
     abstract val game: GameDao
 
-    companion object {
-        @Volatile
-        private var INSTANCE: StroopDatabase? = null
-
-        fun getInstance(context: Context): StroopDatabase {
-            if (INSTANCE == null) {
-                synchronized(this) {
-                    if (INSTANCE == null) {
-                        INSTANCE = Room.databaseBuilder(
-                            context.applicationContext,
-                            StroopDatabase::class.java,
-                            "stroop_database"
-                        ).build()
-                    }
-                }
-            }
-            return INSTANCE!!
-        }
-    }
-
 }

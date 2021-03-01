@@ -3,8 +3,9 @@ package es.iessaladillo.pedrojoya.stroop.data.repository
 import androidx.lifecycle.LiveData
 import es.iessaladillo.pedrojoya.stroop.data.dao.PlayerDao
 import es.iessaladillo.pedrojoya.stroop.data.pojo.Player
+import javax.inject.Inject
 
-class PlayerRepositoryImp(private val playerDao: PlayerDao) : PlayerRepository {
+class PlayerRepositoryImp @Inject constructor(private val playerDao: PlayerDao) : PlayerRepository {
 
     override fun queryCurrentPlayer(id: Long): LiveData<Player?> =
         playerDao.queryCurrentPlayer(id)

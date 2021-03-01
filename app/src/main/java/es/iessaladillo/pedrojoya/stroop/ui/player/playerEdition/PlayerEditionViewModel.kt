@@ -4,14 +4,17 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.lifecycle.*
+import dagger.hilt.android.lifecycle.HiltViewModel
 import es.iessaladillo.pedrojoya.stroop.*
 import es.iessaladillo.pedrojoya.stroop.base.Event
 import es.iessaladillo.pedrojoya.stroop.data.pojo.Player
 import es.iessaladillo.pedrojoya.stroop.data.repository.PlayerRepository
 import es.iessaladillo.pedrojoya.stroop.extensions.getValue
+import javax.inject.Inject
 import kotlin.concurrent.thread
 
-class PlayerEditionViewModel(
+@HiltViewModel
+class PlayerEditionViewModel @Inject constructor(
     private val playerRepository: PlayerRepository,
     private val application: Application
 ) : ViewModel() {

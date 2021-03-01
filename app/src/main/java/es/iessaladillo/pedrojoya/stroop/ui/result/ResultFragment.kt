@@ -7,6 +7,7 @@ import android.viewbinding.library.fragment.viewBinding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import dagger.hilt.android.AndroidEntryPoint
 import es.iessaladillo.pedrojoya.stroop.R
 import es.iessaladillo.pedrojoya.stroop.base.OnToolbarAvailableListener
 import es.iessaladillo.pedrojoya.stroop.data.StroopDatabase
@@ -14,19 +15,13 @@ import es.iessaladillo.pedrojoya.stroop.data.repository.PlayerGameRepositoryImp
 import es.iessaladillo.pedrojoya.stroop.databinding.ResultFragmentBinding
 import kotlinx.android.synthetic.main.result_fragment.*
 
+@AndroidEntryPoint
 class ResultFragment : Fragment(R.layout.result_fragment) {
 
-    private val viewModel: ResultFragmentViewModel by viewModels {
-        ResultFragmentViewModelFactory(
-            PlayerGameRepositoryImp(
-                StroopDatabase.getInstance(
-                    requireContext()
-                ).playerGameDao
-            )
-        )
-    }
+    private val viewModel: ResultFragmentViewModel by viewModels()
 
     private lateinit var listener: OnToolbarAvailableListener
+
     private  val binding: ResultFragmentBinding by viewBinding()
 
     private val args: ResultFragmentArgs by navArgs()

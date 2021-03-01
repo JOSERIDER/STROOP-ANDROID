@@ -3,8 +3,9 @@ package es.iessaladillo.pedrojoya.stroop.data.repository
 import androidx.lifecycle.LiveData
 import es.iessaladillo.pedrojoya.stroop.data.dao.PlayerGameDao
 import es.iessaladillo.pedrojoya.stroop.data.pojo.PlayerGame
+import javax.inject.Inject
 
-class PlayerGameRepositoryImp(private val playerGameDao: PlayerGameDao): PlayerGameRepository {
+class PlayerGameRepositoryImp @Inject constructor(private val playerGameDao: PlayerGameDao): PlayerGameRepository {
 
     override fun queryAllGames(): LiveData<List<PlayerGame>> = playerGameDao.queryAllGames()
 

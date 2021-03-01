@@ -13,6 +13,8 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.HiltAndroidApp
 import es.iessaladillo.pedrojoya.stroop.MESSAGE_ID_HELP_PLAYER_SELECTION
 import es.iessaladillo.pedrojoya.stroop.R
 import es.iessaladillo.pedrojoya.stroop.base.OnToolbarAvailableListener
@@ -21,8 +23,8 @@ import es.iessaladillo.pedrojoya.stroop.data.repository.PlayerRepositoryImp
 import es.iessaladillo.pedrojoya.stroop.databinding.PlayerSelectionFragmentBinding
 import kotlinx.android.synthetic.main.player_selection_fragment.*
 
+@AndroidEntryPoint
 class PlayerSelectionFragment : Fragment(R.layout.player_selection_fragment) {
-
 
     private lateinit var listener: OnToolbarAvailableListener
     private lateinit var binding: PlayerSelectionFragmentBinding
@@ -36,14 +38,7 @@ class PlayerSelectionFragment : Fragment(R.layout.player_selection_fragment) {
         }
     }
 
-
-    private val viewModel: PlayerSelectionViewModel by viewModels {
-        PlayerSelectionViewModelFactory(
-            PlayerRepositoryImp(StroopDatabase.getInstance(requireContext()).playerDao),
-            requireActivity().application
-        )
-    }
-
+    private val viewModel: PlayerSelectionViewModel by viewModels()
 
     override fun onAttach(context: Context) {
         super.onAttach(context)

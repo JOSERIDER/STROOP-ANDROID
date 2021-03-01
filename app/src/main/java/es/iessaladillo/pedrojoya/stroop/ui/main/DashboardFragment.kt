@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import es.iessaladillo.pedrojoya.stroop.MESSAGE_ID_HELP_DASHBOARD
 import es.iessaladillo.pedrojoya.stroop.R
 import es.iessaladillo.pedrojoya.stroop.base.OnToolbarAvailableListener
@@ -20,15 +21,11 @@ import es.iessaladillo.pedrojoya.stroop.data.repository.PlayerRepositoryImp
 import es.iessaladillo.pedrojoya.stroop.databinding.DashboardFragmentBinding
 import kotlinx.android.synthetic.main.dashboard_fragment.*
 
+@AndroidEntryPoint
 class DashboardFragment : Fragment(R.layout.dashboard_fragment) {
 
+    private val viewModel: DashboardFragmentViewModel by viewModels()
 
-    private val viewModel: DashboardFragmentViewModel by viewModels {
-        DashboardFragmentViewModelFactory(
-            PlayerRepositoryImp(StroopDatabase.getInstance(requireContext()).playerDao),
-            requireActivity().application
-        )
-    }
     private val navController: NavController by lazy {
         findNavController()
     }
@@ -48,7 +45,6 @@ class DashboardFragment : Fragment(R.layout.dashboard_fragment) {
             )
         }
     }
-
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.main_menu, menu)
